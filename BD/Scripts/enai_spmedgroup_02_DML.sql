@@ -5,19 +5,19 @@ GO
 	VALUES ('Administrador'), ('Medico'), ('Paciente');
 	GO
 
-	INSERT INTO USUARIO (idTipoU, email, senha)
+	INSERT INTO USUARIO (idTipoU, nome, email, senha)
 	VALUES 
-	(1,'adm@adm.com', 'adm12345'), 
-	(2,'ricardo.lemos@spmedicalgroup.com.br', 'xxxxxxxx' ), 
-	(2,'roberto.porssale@spmedicalgroup.com.br', 'xxxxxxxx' ),
-	(2,'helena.strada@spmedicalgroup.com.br', 'xxxxxxxx' ), 
-	(3,'ligia@gmail.com', 'xxxxxxxx'),
-	(3,'alexandre@gmail.com', 'xxxxxxxx'), 
-	(3,'fernando@gmail.com', 'xxxxxxxx'), 
-	(3,'henrique@gmail.com', 'xxxxxxxx'), 
-	(3,'joao@hotmail.com', 'xxxxxxxx'), 
-	(3,'bruno@gmail.com', 'xxxxxxxx'), 
-	(3,'mariana@outlook.com', 'xxxxxxxx');
+	(1,'Adm','adm@adm.com', 'adm12345'), 
+	(2,'Ricardo','ricardo.lemos@spmedicalgroup.com.br', 'xxxxxxxx' ), 
+	(2,'Roberto','roberto.porssale@spmedicalgroup.com.br', 'xxxxxxxx' ),
+	(2,'Helena','helena.strada@spmedicalgroup.com.br', 'xxxxxxxx' ), 
+	(3,'Ligia','ligia@gmail.com', 'xxxxxxxx'),
+	(3,'Alexandre','alexandre@gmail.com', 'xxxxxxxx'), 
+	(3,'Fernando','fernando@gmail.com', 'xxxxxxxx'), 
+	(3,'Henrique','henrique@gmail.com', 'xxxxxxxx'), 
+	(3,'João','joao@hotmail.com', 'xxxxxxxx'), 
+	(3,'Bruno','bruno@gmail.com', 'xxxxxxxx'), 
+	(3,'Mariana','mariana@outlook.com', 'xxxxxxxx');
 	GO
 
 	INSERT INTO  MEDICO (idUsuario,idClinica, idEspecialidade, nomeMedico,crm)
@@ -40,7 +40,7 @@ GO
 
 	INSERT INTO CONSULTA (idPaciente, idMedico, idSituacao, dataConsulta, descricao)
 	VALUES
-	(7,4,1, '20/1/20  15:00',''),
+	(7,1,1, '20/1/20  15:00',''),
 	(2,3,2, '01/06/2020 10:00', ''),
 	(3,3,1, '02/07/2020 11:00', ''),
 	(2,3,1,'02/06/2018 10:00', ''),
@@ -50,9 +50,9 @@ GO
 	GO	
 
 
-	INSERT INTO CLINICA ( nomeClinica, cnpj,RazaoSocial, endereco, telefone)
+	INSERT INTO CLINICA ( nomeClinica, cnpj,RazaoSocial, endereco, telefone, horarioFuncionamento)
 	VALUES
-	('Clinica Possarle', '86.400.902/0001-30', 'SP Medical Group', 'Av. Barão Limeira, 532, São Paulo, SP', '4002-8922');
+	('Clinica Possarle', '86.400.902/0001-30', 'SP Medical Group', 'Av. Barão Limeira, 532, São Paulo, SP', '4002-8922', 'Das 6:00 ás 18:00');
 	GO
 
 	INSERT INTO ESPECIALIDADE (nomeEspecialidade)

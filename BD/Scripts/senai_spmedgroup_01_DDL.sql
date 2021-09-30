@@ -28,13 +28,15 @@ GO
 	cnpj VARCHAR (20) UNIQUE NOT NULL,
 	RazaoSocial VARCHAR (200)  NOT NULL,
 	endereco VARCHAR (300)  NOT NULL,
-	telefone CHAR(15) UNIQUE
+	telefone CHAR(15) UNIQUE,
+	horarioFuncionamento VARCHAR(50) NOT NULL
 	);
 	GO
 
 	CREATE TABLE USUARIO (
 	idUsuario BIGINT PRIMARY KEY IDENTITY,
 	idTipoU  TINYINT FOREIGN KEY REFERENCES TIPOUSUARIO (idTipoU),
+	nome VARCHAR(150) NOT NULL,
 	email VARCHAR (256)  NOT NULL,
 	senha VARCHAR (100)  CHECK (len (senha)>= 8) NOT NULL,
 	); 
@@ -73,5 +75,5 @@ GO
 	);
 	GO
 
-
-	
+	DROP DATABASE SP_Med_Group
+	GO
