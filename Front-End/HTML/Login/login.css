@@ -1,0 +1,35 @@
+.color{
+    background-image: url(../../ASSETS/Imagemfundo-login.png);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.center{
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input{
+    width: 480px;
+    margin-top: 80px;
+    border-radius: 15px;
+    height: 30px;
+    border-bottom: 1px solid ;
+}
+
+button{
+    height: 50px;
+    margin-top: 50px;
+    width: 350px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    background-color: #3D8DF2;
+}
