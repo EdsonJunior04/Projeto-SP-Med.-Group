@@ -4,12 +4,18 @@ class Consultas extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            listaConsultas: [],
+            listaConsultas: [ { idConsulta: 1, titulo : 'Fisioterapia'}, {idConsulta: 2, titulo: 'Cardiologista' } ],
             titulo : ''
         };
     };
 
+buscarConsultas = () => {
+    console.log("Agora vamos fazer a chamada para a API")
+    fetch('http://localhost:5000/')
+}
+
     componentDidMount(){
+        this.buscarConsultas()
         //
     };
 
@@ -29,7 +35,16 @@ class Consultas extends React.Component{
                                 </tr>
                             </thead>
                             <tbody>
-
+                                {
+                                    this.state.listaConsultas.map( (consulta) => {
+                                        return(
+                                            <tr key={consulta.idConsulta} >
+                                                <td>{consulta.idConsulta}</td>
+                                                <td>{consulta.titulo}</td>
+                                            </tr>
+                                        )
+                                    } )
+                                }
                             </tbody>
                         </table>
                     </section>

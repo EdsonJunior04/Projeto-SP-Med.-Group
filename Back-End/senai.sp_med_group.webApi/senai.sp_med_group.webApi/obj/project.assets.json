@@ -7686,19 +7686,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ejr_0\\.nuget\\packages\\": {}
+    "C:\\Users\\46813334840\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SENAI\\Clones\\Projeto_SP_Med.Group\\senai_sprint2_Backend\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
+      "projectUniqueName": "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
       "projectName": "senai.sp_med_group.webApi",
-      "projectPath": "E:\\SENAI\\Clones\\Projeto_SP_Med.Group\\senai_sprint2_Backend\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
-      "packagesPath": "C:\\Users\\ejr_0\\.nuget\\packages\\",
-      "outputPath": "E:\\SENAI\\Clones\\Projeto_SP_Med.Group\\senai_sprint2_Backend\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\obj\\",
+      "projectPath": "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
+      "packagesPath": "C:\\Users\\46813334840\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ejr_0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\46813334840\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
