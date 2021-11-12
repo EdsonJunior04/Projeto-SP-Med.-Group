@@ -75,5 +75,4 @@ GO
 	);
 	GO
 
-	DROP DATABASE SP_Med_Group
-	GO
+	
