@@ -7,6 +7,7 @@ import './index.css';
 import Home from './pages/Home/App';
 import Consultas from './pages/consultas/Consultas';
 import NotFound from './pages/notFound/NotFound.js';
+import Login from './pages/Login/login';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -18,6 +19,7 @@ const routing=(
       <Switch>
       <Route exact path="/" component={ Home } />
       <Route  path="/consultas" component={ Consultas } />
+      <Route  path="/login" component={ Login } />
       <Route  path="/notfound" component={ NotFound } />
       <Redirect to="/notfound" />
       </Switch>

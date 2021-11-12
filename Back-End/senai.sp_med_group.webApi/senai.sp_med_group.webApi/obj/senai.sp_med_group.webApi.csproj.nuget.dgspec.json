@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj": {}
+    "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj": {
+    "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
+        "projectUniqueName": "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
         "projectName": "senai.sp_med_group.webApi",
-        "projectPath": "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
-        "packagesPath": "C:\\Users\\46813334840\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\46813334840\\Documents\\Edson Maciel\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\obj\\",
+        "projectPath": "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
+        "packagesPath": "C:\\Users\\ejr_0\\.nuget\\packages\\",
+        "outputPath": "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\46813334840\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ejr_0\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
