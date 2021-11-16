@@ -19,56 +19,46 @@ export default class Login extends Component {
         };
     }
 
-    // // Função que faz a chamada para a API para realizar o login
-    // efetuaLogin = (event) => {
-    //     //ignora o comportamento padrão do navegador (recarregar a página, por exemplo)
-    //     event.preventDefault();
+    efetuaLogin = (evento) => {
+        evento.preventDefault();
+        this.setState({ erroMensagem: '', isLoading: true });
+        axios.post('http://localhost:5000/api/Login', {
+            emailUsuario: this.state.email,
+            senhaUsuario: this.state.senha,
+        })
+            .then((resposta) => {
+                debugger;
+                if (resposta.status === 200) {
+                    localStorage.setItem('usuario-login', resposta.data.token);
+                    this.setState({ isLoading: false });
 
-    //     this.setState({ erroMensagem: '', isLoading: true });
+                    let base64 = localStorage.getItem('usuario-login').split('.')[1];
+                    console.log(base64);
+                    console.log(this.props);
+                    console.log(parseJwt().role)
+                    console.log(this.props);
+                    if (parseJwt().role === '3') {
+                        this.props.history.push('/consultas');
+                        console.log('Estou logado: ' + usuarioAutenticado());
+                    } else {
+                        this.props.history.push('/')
+                    }
 
-    //     axios
-    //         .post('http://localhost:5000/api/Login', {
-    //             email: '',
-    //             senha: '',
-    //         })
+                }
+            })
+            .catch(() => {
+                this.setState({
+                    erroMensagem: 'E-mail e/ou senha estão inválidos',
+                    isLoading: false,
+                })
+            })
+    }
 
-    //         //Recebe todo o conteúdo da resposta da requisição  na variável resposta
-    //         .then((resposta) => {
-    //             //verifico se o status code dessa resposta é igual a 200 
-    //             if (resposta.status === 200) {
-    //                 //se sim, exibe no console do navegador o token usuário logado,
-    //                 //console.log ('Mu token é: ' + resposta.data.token);
-    //                 //salva o valor  do token  no localStorage
+    atualizaStateCampo = (campo) => {
+        this.setState({ [campo.target.name]: campo.target.value });
+    }
 
-    //                 localStorage.setItem('usuario-login', resposta.data.token);
-    //                 // e define que a requisição terminou
-    //                 this.setState({ isLoading: false });
 
-    //                 //define variável base64 que vai receber o payload do token
-    //                 let base64 = localStorage.getItem('usuario-login').split('.')[1];
-    //                 //exibe no console do navegador o valor em base64
-    //                 console.log(base64);
-
-    //                 // exibe no console o valor decodificado de base64 para string
-    //                 // console.log(window.atob(base64));
-
-    //                 // exibe no console do navegador o valor da chave role
-    //                 // console.log( JSON.parse( window.atob(base64) ) );
-
-    //                 // console.log( parseJwt().role );
-
-    //                 // exibe as propriedades da página
-    //                 console.log(this.props);
-    //                 //verifique se o usuario logado é do tipo administrador
-    //                 if (parseJWT().role === '1') {
-    //                     this.props.history.push('/consultas');
-    //                     console.log('Estou logado: ' + usuarioAutenticado());
-    //                 }else{
-    //                     this.props.history.push('/')
-    //                 }
-    //             }
-    //         })
-    // }
 
     render() {
         return (
@@ -83,31 +73,69 @@ export default class Login extends Component {
                                 alt="logo da Sp Medical Group"
                             />{' '}
                         </Link>
+                        <form onSubmit={this.efetuaLogin}>
+                            <div className="center-login">
 
-                        <input
-                            className="input_login"
-                            type="text"
-                            name="email"
-                            // value={this.state.email}
-                            placeholder=" E-mail"
-                        // onChange={  }
-                        />
 
-                        <input
-                            className="input_login"
-                            type="password"
-                            name="password"
-                            // value={this.state.senha}
-                            placeholder=" senha"
-                        // onChange={  }
-                        />
+                                <input
+                                    className="input_login"
+                                    type="text"
+                                    name="email"
+                                    value={this.state.email}
+                                    placeholder=" E-mail"
+                                    onChange={this.atualizaStateCampo}
+                                />
 
-                        <button
+                                <input
+                                    className="input_login"
+                                    type="password"
+                                    name="senha"
+                                    value={this.state.senhaUsuario}
+                                    placeholder=" senha"
+                                    onChange={this.atualizaStateCampo}
+                                />
+
+
+                                {
+                                    // Caso seja true, renderiza o botão desabilitado com o texto 'Loading...'
+                                    this.state.isLoading === true && (
+                                        <button
+                                            type="submit"
+                                            disabled
+                                            className="btn_login"
+                                            id="btn_login"
+                                        >
+                                            Loading...
+                                        </button>
+                                    )
+                                }
+
+                                {
+                                    // Caso seja false, renderiza o botão habilitado com o texto 'Login'
+                                    this.state.isLoading === false && (
+                                        <button
+                                            className="btn_login"
+                                            id="btn_login"
+                                            type="submit"
+                                        // disabled={
+                                        //     this.state.email === '' || this.state.senha === ''
+                                        //         ? 'none'
+                                        //         : ''
+                                        // }   
+                                        >
+                                            Login
+                                        </button>
+                                    )
+                                }
+
+                                {/* <button
                             type="submit"
                             className="btn_login"
                         >
                             Logar
-                        </button>
+                        </button> */}
+                            </div>
+                        </form>
                     </div>
                 </main>
             </div>

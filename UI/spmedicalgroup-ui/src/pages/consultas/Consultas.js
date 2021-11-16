@@ -16,15 +16,15 @@ class Consultas extends React.Component {
         };
     };
 
-    // buscarConsultas = () => {
-    //     console.log("Agora vamos fazer a chamada para a API")
-    //     fetch('http://localhost:5000/')
-    // }
+    buscarConsultas = () => {
+        console.log("Agora vamos fazer a chamada para a API")
+        fetch('http://localhost:5000/Consultas')
+    }
 
-    //     componentDidMount(){
-    //         this.buscarConsultas()
-    //         //
-    //     };
+        componentDidMount(){
+            this.buscarConsultas()
+            //
+        };
 
     render() {
         return (

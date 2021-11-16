@@ -1,39 +1,67 @@
-	USE SP_Med_Group
-	GO
+USE SP_MED_GROUP;
 
--- Mostrar a quantidade de usuários após realizar a importação do banco de dados
-SELECT COUNT(*) 'Número de usuários cadastrados' FROM USUARIO
+--listar tudo de cada um
+SELECT * FROM PACIENTE;
+SELECT * FROM CONSULTA;
+SELECT * FROM USUARIO;
+SELECT * FROM MEDICO;
+SELECT * FROM SITUACAO;
+SELECT * FROM TIPOUSUARIO;
+SELECT * FROM INSTITUICAO;
+SELECT * FROM ESPECIALIZACAO;
+SELECT * FROM IMAGEMUSUARIO;
+
+--listar todos dados relacionados à consulta
+SELECT UP.nome Paciente, 
+	   E.tituloEspecializacao Especialização,
+	   CONVERT(VARCHAR(25),C.dataConsulta,103) [Data da Consulta],
+	   S.descricao Situação,
+	   C.descricao 
+  FROM CONSULTA C
+ INNER JOIN SITUACAO S
+    ON C.idSituacao = S.idSituacao
+ INNER JOIN PACIENTE P
+    ON C.idPaciente = P.idPaciente
+ INNER JOIN MEDICO M
+    ON C.idMedico = M.idMedico 
+ INNER JOIN ESPECIALIZACAO E
+    ON M.idEspecializacao = E.idEspecializacao
+ INNER JOIN USUARIO UP
+    ON P.idUsuario = UP.idUsuario
+ INNER JOIN USUARIO UM
+    ON M.idUsuario = UM.idUsuario
 GO
 
--- Converter a data de nascimento do usuário para o formato (mm-dd-yyyy) na exibição
-SELECT nomePaciente Paciente, Convert(varchar,dataNascimento, 105) 'Data de Nascimento' FROM PACIENTE
+--Criou uma função para retornar a quantidade de médicos de uma determinada especialidade
+ CREATE FUNCTION MED_ESPECIALIZACAO(@tituloEspec VARCHAR(90))
+RETURNS TABLE
+     AS
+ RETURN (
+          SELECT @tituloEspec AS especializacao, COUNT(idEspecializacao) [Número de Médicos]
+		    FROM ESPECIALIZACAO
+		   WHERE tituloEspecializacao LIKE '%' + @tituloEspec + '%'
+        )
+GO
+--DROP FUNCTION MED_ESPECIALIZACAO
+SELECT * FROM MED_ESPECIALIZACAO('Psiquiatria')
 GO
 
--- Calcular a idade do usuário a partir da data de nascimento
-SELECT nomePaciente Paciente, DATEDIFF(YEAR,dataNascimento,GETDATE()) Idade FROM PACIENTE
+--Criou uma função para que retorne a idade do usuário a partir de uma determinada stored procedure
+CREATE PROCEDURE  IdadePaciente
+ @nome VARCHAR(20)
+    AS
+ BEGIN
+SELECT nome, DATEDIFF(YEAR,dataNascimento,GETDATE())
+    AS idade
+  FROM USUARIO U
+ INNER JOIN PACIENTE P
+    ON U.idUsuario = P.idUsuario
+ WHERE nome = @nome
+   END
 GO
 
-SELECT	idConsulta,
-		dataConsulta [Data da Consulta],
-		nomePaciente Paciente,
-		nomeUsuario [Nome de Usuário do Paciente],
-		nomeMedico [Médico],
-		nomeEspecialidade [Especialidade],
-		CLINICA.nomeFantasia [Clínica],
-		nomeSituacao [Situação da Consulta],
-		CONSULTA.descricao [Descrção da Consulta]
-FROM CONSULTA
-LEFT JOIN SITUACAO
-ON CONSULTA.idSituacao = SITUACAO.idSituacao
-LEFT JOIN PACIENTE
-ON CONSULTA.idPaciente = PACIENTE.idPaciente
-LEFT JOIN MEDICO
-ON CONSULTA.idMedico = MEDICO.idMedico
-LEFT JOIN ESPECIALIDADE
-ON MEDICO.idEspecialidade = ESPECIALIDADE.idEspecialidade
-LEFT JOIN CLINICA
-ON MEDICO.idClinica = CLINICA.idClinica
-INNER JOIN USUARIO
-ON PACIENTE.idUsuario = USUARIO.idUsuario
+EXEC IdadePaciente 'Ligia'
+
+--Mostrar a quantidade de usuário após realizar a importação do banco de dados
+SELECT COUNT(idUsuario) [Quantidade de Usuarios] FROM USUARIO
 GO
-	
