@@ -1,11 +1,11 @@
 USE SP_Med_Group
 GO
 
-	INSERT INTO TIPOUSUARIO ( nomeTipoU)
+	INSERT INTO TIPOUSUARIO ( nomeTipoUsuario)
 	VALUES ('Administrador'), ('Medico'), ('Paciente');
 	GO
 
-	INSERT INTO USUARIO (idTipoU, nome, email, senha)
+	INSERT INTO USUARIO (idTipoUsuario , nomeUsuario, email, senha)
 	VALUES 
 	(1,'Adm','adm@adm.com', 'adm12345'), 
 	(2,'Ricardo','ricardo.lemos@spmedicalgroup.com.br', 'xxxxxxxx' ), 
@@ -25,7 +25,7 @@ GO
 	GO
 
 	
-	INSERT INTO PACIENTE (idUsuario, nomePaciente,dataNasc, telefone,  rg, cpf	, endereco)
+	INSERT INTO PACIENTE (idUsuario, nomePaciente,dataNascimento, telefone,  rg, cpf	, endereco)
 	VALUES 
 	(5,'Ligia','13/10/1983','11 34567654', '435225435', '94839859000', 'Rua Estado de Israel 240, São Paulo, Estado de São Paulo, 04022-000'),
 	(6,'Alexandre', '23/7/2001','11 987656543','326543457', '73556944057', 'Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200'),
@@ -50,9 +50,9 @@ GO
 	GO	
 
 
-	INSERT INTO CLINICA ( nomeClinica, cnpj,RazaoSocial, endereco, telefone, horarioFuncionamento)
+	INSERT INTO CLINICA ( nomeFantasia, cnpj, razaoSocial, endereco, telefone, email)
 	VALUES
-	('Clinica Possarle', '86.400.902/0001-30', 'SP Medical Group', 'Av. Barão Limeira, 532, São Paulo, SP', '4002-8922', 'Das 6:00 ás 18:00');
+	('Clinica Possarle', '86.400.902/0001-30', 'SP Medical Group', 'Av. Barão Limeira, 532, São Paulo, SP', '4002-8922', 'clinicPorssale@spmedicalgroup.com.br');
 	GO
 
 	INSERT INTO ESPECIALIDADE (nomeEspecialidade)
