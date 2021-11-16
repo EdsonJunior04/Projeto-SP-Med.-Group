@@ -94,10 +94,7 @@ export default class Login extends Component {
                                     placeholder=" senha"
                                     onChange={this.atualizaStateCampo}
                                 />
-
-
                                 {
-                                    // Caso seja true, renderiza o botão desabilitado com o texto 'Loading...'
                                     this.state.isLoading === true && (
                                         <button
                                             type="submit"
@@ -117,11 +114,11 @@ export default class Login extends Component {
                                             className="btn_login"
                                             id="btn_login"
                                             type="submit"
-                                        // disabled={
-                                        //     this.state.email === '' || this.state.senha === ''
-                                        //         ? 'none'
-                                        //         : ''
-                                        // }   
+                                            disabled={
+                                                this.state.email === '' || this.state.senha === ''
+                                                    ? 'none'
+                                                    : ''
+                                            }
                                         >
                                             Login
                                         </button>

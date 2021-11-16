@@ -21,10 +21,10 @@ class Consultas extends React.Component {
         fetch('http://localhost:5000/Consultas')
     }
 
-        componentDidMount(){
-            this.buscarConsultas()
-            //
-        };
+    componentDidMount() {
+        this.buscarConsultas()
+        //
+    };
 
     render() {
         return (
@@ -43,7 +43,8 @@ class Consultas extends React.Component {
 
                         <div>
                             <Link to="/login" className="links_header"> Login </Link>
-                            <Link to="/cadastro" className="links_header"> Cadastro </Link>
+                            <Link to="/" className="links_header"> Home </Link>
+                            
                         </div>
 
                     </div>
@@ -84,57 +85,57 @@ class Consultas extends React.Component {
                     <section className="cadastro_consulta grid">
                         <h2 className="letra_tam">Cadastro de Consultas</h2>
                         <div className="cadastro_ajuste_consulta">
+                            <form >
 
-                            <input
-                                className="input_consulta"
-                                type="text"
-                                name="email"
-                                // value={this.state.email}
-                                placeholder=" Nome do Paciente"
-                            // onChange={  }
-                            />
-                            <input
-                                className="input_consulta"
-                                type="text"
-                                name="email"
-                                // value={this.state.email}
-                                placeholder=" Nome do Médico"
-                            // onChange={  }
-                            />
+                                <input
+                                    className="input_consulta"
+                                    type="text"
+                                    name="email"
+                                    //value={this.state.email}
+                                    placeholder=" Nome do Paciente"
+                                // onChange={  }
+                                />
+                                <input
+                                    className="input_consulta"
+                                    type="text"
+                                    name="Name"
+                                    // value={this.state.email}
+                                    placeholder=" Nome do Médico"
+                                // onChange={  }
+                                />
 
-                            <input
-                                className="input_consulta"
-                                type="text"
-                                name="email"
-                                // value={this.state.email}
-                                placeholder=" Especialidade"
-                            // onChange={  }
-                            />
+                                <input
+                                    className="input_consulta"
+                                    type="text"
+                                    name="Name"
+                                    // value={this.state.email}
+                                    placeholder=" Especialidade"
+                                // onChange={  }
+                                />
 
-                            <input
-                                className="input_consulta"
-                                type="date"
-                                name="email"
-                                // value={this.state.email}
-                                placeholder=" userName"
-                            // onChange={  }
-                            />
+                                <input
+                                    className="input_consulta"
+                                    type="date"
+                                    name="Data"
+                                    // value={this.state.email}
+                                    placeholder=" userName"
+                                // onChange={  }
+                                />
+
+
+                                <button
+                                    type="submit"
+                                    className="btn_consulta"
+                                >
+                                    Cadastrar
+                                </button>
+                            </form>
                         </div>
-
-                        <button
-                            type="submit"
-                            className="btn_consulta"
-                        >
-                            Cadastrar
-                        </button>
-
                     </section>
                 </main>
 
                 <footer>
                     <div className="container_footer">
-
-
                         <div className="center_footer">
                             <Link to="/">
                                 <img
