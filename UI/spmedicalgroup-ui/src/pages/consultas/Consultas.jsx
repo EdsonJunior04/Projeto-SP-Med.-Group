@@ -11,14 +11,20 @@ class Consultas extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            listaConsultas: [{ idConsulta: 1, titulo: 'Fisioterapia' }, { idConsulta: 2, titulo: 'Cardiologista' }],
+            listaConsultas: [],
             titulo: ''
         };
     };
 
     buscarConsultas = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://localhost:5000/Consultas')
+        fetch('http://localhost:5000/api/Consultas')
+
+            .then(resposta => resposta.json())
+
+            .then(dados => this.setState({ listaConsultas: dados }))
+
+            .catch(erro => console.log(erro))
     }
 
     componentDidMount() {
@@ -44,7 +50,7 @@ class Consultas extends React.Component {
                         <div>
                             <Link to="/login" className="links_header"> Login </Link>
                             <Link to="/" className="links_header"> Home </Link>
-                            
+
                         </div>
 
                     </div>
@@ -55,23 +61,25 @@ class Consultas extends React.Component {
                     <section className="lista_consulta grid">
                         <h2>Lista de Consultas</h2>
                         <table>
-                            <thead>
+                            <thead >
                                 <tr>
                                     <th>#</th>
                                     <th>Paciente</th>
                                     <th>Médico</th>
-                                    <th>Epecialidade</th>
+                                    <th>Modo</th>
                                     <th>Data</th>
-                                    <th>Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 {
                                     this.state.listaConsultas.map((consulta) => {
                                         return (
                                             <tr key={consulta.idConsulta} >
                                                 <td>{consulta.idConsulta}</td>
-                                                <td>{consulta.titulo}</td>
+                                                <td>{consulta.idPaciente}</td>
+                                                <td>{consulta.idMedico}</td>
+                                                <td>{consulta.descricao}</td>
+                                                <td>{consulta.dataConsulta}</td>
                                             </tr>
                                         )
                                     })
@@ -109,7 +117,7 @@ class Consultas extends React.Component {
                                     type="text"
                                     name="Name"
                                     // value={this.state.email}
-                                    placeholder=" Especialidade"
+                                    placeholder=" Modo"
                                 // onChange={  }
                                 />
 
@@ -122,13 +130,14 @@ class Consultas extends React.Component {
                                 // onChange={  }
                                 />
 
-
-                                <button
-                                    type="submit"
-                                    className="btn_consulta"
-                                >
-                                    Cadastrar
-                                </button>
+                                <div className="btn_cadastrar_consulta">
+                                    <button
+                                        type="submit"
+                                        className="btn_consulta"
+                                    >
+                                        Cadastrar
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </section>

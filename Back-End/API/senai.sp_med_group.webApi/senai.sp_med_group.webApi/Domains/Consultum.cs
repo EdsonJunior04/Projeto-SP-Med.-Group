@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace senai.sp_med_group.webApi.Domains
 {
-    public partial class Consultum
+    public partial class Consulta
     {
         [Key]
         public int IdConsulta { get; set; }
