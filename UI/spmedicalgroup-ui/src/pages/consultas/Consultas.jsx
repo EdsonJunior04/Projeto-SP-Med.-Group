@@ -66,7 +66,7 @@ class Consultas extends React.Component {
                                     <th>#</th>
                                     <th>Paciente</th>
                                     <th>Médico</th>
-                                    <th>Modo</th>
+                                    <th>Descrição</th>
                                     <th>Data</th>
                                 </tr>
                             </thead>
@@ -76,10 +76,13 @@ class Consultas extends React.Component {
                                         return (
                                             <tr key={consulta.idConsulta} >
                                                 <td>{consulta.idConsulta}</td>
-                                                <td>{consulta.idPaciente}</td>
-                                                <td>{consulta.idMedico}</td>
+                                                <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
+                                                <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>
-                                                <td>{consulta.dataConsulta}</td>
+                                                <td>{ Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'short', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(consulta.dataConsulta)) }</td>
                                             </tr>
                                         )
                                     })

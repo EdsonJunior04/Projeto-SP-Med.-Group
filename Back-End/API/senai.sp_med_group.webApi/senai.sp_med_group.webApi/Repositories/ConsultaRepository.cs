@@ -136,7 +136,7 @@ namespace senai.sp_med_group.webApi.Repositories
 
         public List<Consulta> ListarTodas()
         {
-            return ctx.Consulta.ToList();
+            return ctx.Consulta.Include(c => c.IdMedicoNavigation).ThenInclude(c => c.IdUsuarioNavigation).Include(c => c.IdPacienteNavigation).ThenInclude(c => c.IdUsuarioNavigation).Include(c => c.IdSituacaoNavigation).ToList();
         }
 
         public void RemoverConsulta(int id)
