@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Link to="/consultas"><h1>consultas</h1></Link>
+        <Link to="/consultasAdm"><h1>consultas</h1></Link>
         
       </header>
     </div>

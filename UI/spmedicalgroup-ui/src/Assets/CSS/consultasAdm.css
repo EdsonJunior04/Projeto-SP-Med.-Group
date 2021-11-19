@@ -5,6 +5,11 @@
 }
 
 
+p{
+    margin-right: 90px;
+    color: white;
+}
+
 .lista_consulta{
     box-shadow: -5px 4px 20px rgba(0, 0, 0, 0.7), 5px 4px 20px 2px rgba(0, 0, 0, 0.7);
     background-color: #D5E1FA;

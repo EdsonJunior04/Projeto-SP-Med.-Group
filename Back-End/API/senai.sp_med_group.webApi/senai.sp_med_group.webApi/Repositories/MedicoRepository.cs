@@ -1,4 +1,5 @@
-﻿using senai.sp_med_group.webApi.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using senai.sp_med_group.webApi.Context;
 using senai.sp_med_group.webApi.Domains;
 using senai.sp_med_group.webApi.Interfaces;
 using System;
@@ -13,7 +14,8 @@ namespace senai.sp_med_group.webApi.Repositories
         SpMedContext ctx = new SpMedContext();
         public List<Medico> ListarTodos()
         {
-            return ctx.Medicos.ToList();
+            return ctx.Medicos.Include(c => c.IdUsuarioNavigation)
+                .ToList();
         }
         public void Cadastrar(Medico novoMedico)
         {
