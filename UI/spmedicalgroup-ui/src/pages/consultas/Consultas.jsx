@@ -12,7 +12,10 @@ class Consultas extends React.Component {
         super(props);
         this.state = {
             listaConsultas: [],
-            titulo: ''
+            medico: '',
+            paciente: '',
+            descricao: '',
+            data: ''
         };
     };
 
@@ -31,6 +34,47 @@ class Consultas extends React.Component {
         this.buscarConsultas()
         //
     };
+
+    atualizaEstadodoMedico = async (event) => {
+        await this.setState({ medico: event.target.value })
+        console.log(this.state.medico )
+    }
+
+    atualizaEstadodoPaciente = async (event) => {
+        await this.setState({ paciente: event.target.value })
+        console.log(this.state.paciente )
+    }
+
+    atualizaEstadodoDescricao = async (event) => {
+        await this.setState({ descricao: event.target.value })
+        console.log(this.state.descricao )
+    }
+
+    atualizaEstadodoData = async (event) => {
+        await this.setState({ data: event.target.value })
+        console.log(this.state.data )
+    }
+
+
+
+    cadastrarConsulta = (event) => {
+        event.defaultPrevented();
+        fetch('http://localhost:5000/api/Consultas', {
+            method: 'POST',
+
+             body: JSON.stringify({ 
+                idPaciente: this.state.paciente,
+                idMedico: this.state.medico,
+                descricao: this.state.descricao,
+                dataConsulta: this.state.data}),
+                headers: { "Content-Type" :"application/json" }})
+
+
+                .then(console.log("Consulta cadastrada"))
+
+                .catch(erro => console.log(erro))
+
+    }
 
     render() {
         return (
@@ -79,10 +123,10 @@ class Consultas extends React.Component {
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>
-                                                <td>{ Intl.DateTimeFormat("pt-BR", {
+                                                <td>{Intl.DateTimeFormat("pt-BR", {
                                                     year: 'numeric', month: 'short', day: 'numeric',
                                                     hour: 'numeric', minute: 'numeric', hour12: false
-                                                }).format(new Date(consulta.dataConsulta)) }</td>
+                                                }).format(new Date(consulta.dataConsulta))}</td>
                                             </tr>
                                         )
                                     })
@@ -96,50 +140,50 @@ class Consultas extends React.Component {
                     <section className="cadastro_consulta grid">
                         <h2 className="letra_tam">Cadastro de Consultas</h2>
                         <div className="cadastro_ajuste_consulta">
-                            <form >
+                            <form onSubmit={this.cadastrarConsulta} >
+                                <div>
+                                    <input
+                                        className="input_consulta"
+                                        type="text"
+                                        name="name"
+                                        value={this.state.paciente}
+                                        placeholder=" Nome do Paciente"
+                                        onChange={this.atualizaEstadodoPaciente}
+                                    />
+                                    <input
+                                        className="input_consulta"
+                                        type="text"
+                                        name="Name"
+                                        value={this.state.medico}
+                                        placeholder=" Nome do Médico"
+                                        onChange={this.atualizaEstadodoMedico}
+                                    />
 
-                                <input
-                                    className="input_consulta"
-                                    type="text"
-                                    name="email"
-                                    //value={this.state.email}
-                                    placeholder=" Nome do Paciente"
-                                // onChange={  }
-                                />
-                                <input
-                                    className="input_consulta"
-                                    type="text"
-                                    name="Name"
-                                    // value={this.state.email}
-                                    placeholder=" Nome do Médico"
-                                // onChange={  }
-                                />
+                                    <input
+                                        className="input_consulta"
+                                        type="text"
+                                        name="text"
+                                        value={this.state.descricao}
+                                        placeholder=" Descrição"
+                                        onChange={this.atualizaEstadodoDescricao}
+                                    />
 
-                                <input
-                                    className="input_consulta"
-                                    type="text"
-                                    name="Name"
-                                    // value={this.state.email}
-                                    placeholder=" Modo"
-                                // onChange={  }
-                                />
+                                    <input
+                                        className="input_consulta"
+                                        type="date"
+                                        name="Data"
+                                        value={this.state.data}
+                                        onChange={this.atualizaEstadodoData}
+                                    />
 
-                                <input
-                                    className="input_consulta"
-                                    type="date"
-                                    name="Data"
-                                    // value={this.state.email}
-                                    placeholder=" userName"
-                                // onChange={  }
-                                />
-
-                                <div className="btn_cadastrar_consulta">
-                                    <button
-                                        type="submit"
-                                        className="btn_consulta"
-                                    >
-                                        Cadastrar
-                                    </button>
+                                    <div className="btn_cadastrar_consulta">
+                                        <button
+                                            type="submit"
+                                            className="btn_consulta"
+                                        >
+                                            Cadastrar
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

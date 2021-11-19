@@ -8,6 +8,7 @@ import Home from './pages/Home/App';
 import Consultas from './pages/consultas/Consultas';
 import NotFound from './pages/notFound/NotFound.js';
 import Login from './pages/Login/login';
+import ConsultaAdm from './pages/Adm/adm';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -21,6 +22,7 @@ const routing=(
       <Route  path="/consultas" component={ Consultas } />
       <Route  path="/login" component={ Login } />
       <Route  path="/notfound" component={ NotFound } />
+      <Route  path="/adm" component={ ConsultaAdm } />
       <Redirect to="/notfound" />
       </Switch>
      

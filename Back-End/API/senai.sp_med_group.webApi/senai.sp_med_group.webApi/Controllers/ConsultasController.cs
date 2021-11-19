@@ -28,7 +28,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// <summary>
         /// Listar todas as consultas
         /// </summary>
-        //[Authorize(Roles = "1, 2, 3")]
+        [Authorize(Roles = "1, 2, 3")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -55,7 +55,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="novaConsulta"></param>
         /// <returns></returns>
-        [Authorize(Roles = "3")]
+        //[Authorize(Roles = "3")]
         [HttpPost]
         public IActionResult Cadastrar(Consulta novaConsulta)
         {
