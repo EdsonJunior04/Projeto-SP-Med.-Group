@@ -43,7 +43,7 @@ class consultasAdm extends React.Component {
 
             .then(resposta => resposta.json())
 
-            .then(dados => this.setState({ listaPacientes: dados }))
+            .then(dados => this.setState({ listaPacientes: dados.lista }))
 
             .catch(erro => console.log(erro))
             
@@ -63,7 +63,7 @@ class consultasAdm extends React.Component {
     componentDidMount() {
         this.buscarConsultas();
         this.buscarMedicos();
-        //this.buscarPacientes();
+        this.buscarPacientes();
     };
 
 
