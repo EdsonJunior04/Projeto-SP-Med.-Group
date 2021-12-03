@@ -94,7 +94,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// Atualiza os dados de um paciente
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="attPaciente"></param>
+        /// <param name="atualizarPaciente"></param>
         /// <returns></returns>
         [Authorize(Roles = "3")]
         [HttpPut("{id:int}")]
