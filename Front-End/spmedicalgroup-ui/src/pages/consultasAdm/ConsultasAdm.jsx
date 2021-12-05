@@ -28,7 +28,11 @@ class consultasAdm extends React.Component {
 
     buscarMedicos = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://localhost:5000/api/Medicos')
+        fetch('http://192.168.0.26:5000/api/Medicos', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
             .then(resposta => resposta.json())
 
@@ -39,19 +43,27 @@ class consultasAdm extends React.Component {
 
     buscarPacientes = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://localhost:5000/api/Pacientes')
+        fetch('http://192.168.0.26:5000/api/Pacientes',{
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
             .then(resposta => resposta.json())
 
             .then(dados => this.setState({ listaPacientes: dados.lista }))
 
             .catch(erro => console.log(erro))
-            
+
     }
 
     buscarConsultas = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://localhost:5000/api/Consultas')
+        fetch('http://192.168.0.26:5000/api/Consultas',{
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
 
             .then(resposta => resposta.json())
 
@@ -75,7 +87,7 @@ class consultasAdm extends React.Component {
 
 
     cadastrarConsulta = (event) => {
-        event.defaultPrevented();
+        event.preventDefault();
         this.setState({ isLoading: true });
 
         let consulta = {
@@ -86,7 +98,7 @@ class consultasAdm extends React.Component {
             dataConsulta: new Date(this.state.data)
         };
         axios
-            .post('http://localhost:5000/api/Consultas', consulta, {
+            .post('http://192.168.0.26:5000/api/Consultas', consulta, {
                 headers: {
                     authorization: 'Bearer ' + localStorage.getItem('usuario-login')
                 },
@@ -106,7 +118,7 @@ class consultasAdm extends React.Component {
             .then(this.buscarConsultas)
     }
 
-    
+
 
     render() {
         return (
@@ -139,6 +151,7 @@ class consultasAdm extends React.Component {
                             <thead >
                                 <tr>
                                     <th>#</th>
+                                    <th>Situação</th>
                                     <th>Paciente</th>
                                     <th>Médico</th>
                                     <th>Descrição</th>
@@ -151,6 +164,7 @@ class consultasAdm extends React.Component {
                                         return (
                                             <tr key={consulta.idConsulta} >
                                                 <td>{consulta.idConsulta}</td>
+                                                <td>{consulta.idSituacao}</td>
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>
@@ -224,7 +238,7 @@ class consultasAdm extends React.Component {
                                     </select>
 
                                     <input
-                                        className="input_consulta"
+                                        className="input_consulta_descricao"
                                         type="text"
                                         name="descricao"
                                         value={this.state.descricao}
@@ -243,13 +257,13 @@ class consultasAdm extends React.Component {
                                     <div className="btn_cadastrar_consulta">
 
                                         {this.state.isLoading && (
-                                            <button className="btn_consulta" type="submit" disabled>
+                                            <button className="btn_consulta" disabled>
                                                 Loading...{' '}
                                             </button>
                                         )}
 
                                         {this.state.isLoading === false && (
-                                            <button className="btn_consulta" type="submit">Cadastrar</button>
+                                            <button className="btn_consulta" >Cadastrar</button>
                                         )}
                                     </div>
                                 </div>

@@ -27,7 +27,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// Lista todos os médicos
         /// </summary>
         /// <returns></returns>
-        //[Authorize(Roles = "3")]
+        [Authorize(Roles = "3")]
         [HttpGet]
         public IActionResult Listar()
         {
@@ -41,7 +41,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="novoMedico"></param>
         /// <returns></returns>
-       // [Authorize(Roles = "3")]
+        [Authorize(Roles = "3")]
         [HttpPost]
         public IActionResult Cadastrar(Medico novoMedico)
         {

@@ -6,8 +6,11 @@ import './index.css';
 
 import Home from './pages/Home/App';
 import NotFound from './pages/notFound/NotFound.js';
-import Login from './pages/Login/login';
+// import Login from './pages/Login/login';
 import adm from './pages/consultasAdm/ConsultasAdm';
+import Login from './pages/Home/App';
+import Pacientes from './pages/pacientes/pacientes';
+import Medicos from './pages/medicos/medicos';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -19,6 +22,8 @@ const routing=(
       <Route exact path="/" component={ Home } />
       <Route  path="/consultasAdm" component={ adm } />
       <Route  path="/login" component={ Login } />
+      <Route  path="/paciente" component={ Pacientes } />
+      <Route  path="/medicos" component={ Medicos } />
       <Route  path="/notfound" component={ NotFound } />
       <Redirect to="/notfound" />
       </Switch>
