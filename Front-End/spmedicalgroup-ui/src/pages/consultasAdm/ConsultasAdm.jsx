@@ -28,7 +28,7 @@ class consultasAdm extends React.Component {
 
     buscarMedicos = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://192.168.0.26:5000/api/Medicos', {
+        fetch('http://localhost:5000/api/Medicos', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -43,7 +43,7 @@ class consultasAdm extends React.Component {
 
     buscarPacientes = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://192.168.0.26:5000/api/Pacientes',{
+        fetch('http://localhost:5000/api/Pacientes',{
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -59,7 +59,7 @@ class consultasAdm extends React.Component {
 
     buscarConsultas = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://192.168.0.26:5000/api/Consultas',{
+        fetch('http://localhost:5000/api/Consultas',{
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -98,7 +98,7 @@ class consultasAdm extends React.Component {
             dataConsulta: new Date(this.state.data)
         };
         axios
-            .post('http://192.168.0.26:5000/api/Consultas', consulta, {
+            .post('http://localhost:5000/api/Consultas', consulta, {
                 headers: {
                     authorization: 'Bearer ' + localStorage.getItem('usuario-login')
                 },
@@ -164,7 +164,7 @@ class consultasAdm extends React.Component {
                                         return (
                                             <tr key={consulta.idConsulta} >
                                                 <td>{consulta.idConsulta}</td>
-                                                <td>{consulta.idSituacao}</td>
+                                                <td>{consulta.idSituacaoNavigation.descricao}</td>
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>

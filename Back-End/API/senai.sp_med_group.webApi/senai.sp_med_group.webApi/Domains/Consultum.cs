@@ -10,9 +10,12 @@ namespace senai.sp_med_group.webApi.Domains
     {
         [Key]
         public int IdConsulta { get; set; }
+
+        [Required(ErrorMessage = "O médico da consulta é obrigatório!")]
         public int? IdMedico { get; set; }
         public byte? IdSituacao { get; set; }
         public int? IdPaciente { get; set; }
+
         [Required(ErrorMessage = "A Data da consulta é obrigatória!")]
         public DateTime DataConsulta { get; set; }
         public string Descricao { get; set; }

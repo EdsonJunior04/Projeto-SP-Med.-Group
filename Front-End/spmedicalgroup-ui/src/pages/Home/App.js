@@ -21,17 +21,16 @@ export default class Login extends Component {
     efetuarLogin = (evento) => {
         evento.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true })
-        axios.post('http://192.168.0.26:5000/api/Login', {
+        axios.post('http://localhost:5000/api/Login', {
           emailUsuario: this.state.email,
           senhaUsuario: this.state.senha,
         })
           .then((resposta) => {
-            debugger;
             if (resposta.status === 200) {
               localStorage.setItem('usuario-login', resposta.data.token);
               this.setState({ isLoading: false });
-              let base64 = localStorage.getItem('usuario-login').split('.')[1];
-              console.log(base64);
+            //   let base64 = localStorage.getItem('usuario-login').split('.')[1];
+            //   console.log(base64);
               console.log(this.props);
               console.log(parseJwt().role)
               console.log(parseJwt())

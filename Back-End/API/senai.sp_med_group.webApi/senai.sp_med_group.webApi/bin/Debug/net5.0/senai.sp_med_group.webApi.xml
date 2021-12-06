@@ -110,7 +110,7 @@
             Atualiza os dados de um paciente
             </summary>
             <param name="id"></param>
-            <param name="attPaciente"></param>
+            <param name="pacienteAtualizado"></param>
             <returns></returns>
         </member>
         <member name="M:senai.sp_med_group.webApi.Controllers.PacientesController.Deletar(System.Int32)">

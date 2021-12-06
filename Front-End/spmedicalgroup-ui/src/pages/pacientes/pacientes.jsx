@@ -11,7 +11,7 @@ export default function Pacientes() {
 
 
     function buscarMinhasConsultas() {
-        axios('http://192.168.0.26:5000/api/Consultas/Lista/Minhas', {
+        axios('http://localhost:5000/api/Consultas/Lista/Minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -68,7 +68,7 @@ export default function Pacientes() {
                                     return (
                                         <tr key={consulta.idConsulta} >
                                             <td>{consulta.idConsulta}</td>
-                                            <td>{consulta.idSituacao}</td>
+                                            <td>{consulta.idSituacaoNavigation.descricao}</td>
                                             <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                             <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                             <td>{consulta.descricao}</td>

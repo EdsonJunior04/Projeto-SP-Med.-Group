@@ -14,7 +14,7 @@ export default function Medicos() {
     const [isLoading, setisLoading] = useState(false)
 
     function listarConsultas() {
-        axios('http://192.168.0.26:5000/api/Consultas', {
+        axios('http://localhost:5000/api/Consultas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -31,7 +31,7 @@ export default function Medicos() {
 
 
     function buscarMinhasConsultas() {
-        axios('http://192.168.0.26:5000/api/Consultas/Lista/Minhas', {
+        axios('http://localhost:5000/api/Consultas/Lista/Minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -51,7 +51,7 @@ export default function Medicos() {
 
         event.preventDefault();
 
-        axios.patch('http://192.168.0.26:5000/api/Consultas/AlterarDescricao/' + idConsulta, {
+        axios.patch('http://localhost:5000/api/Consultas/AlterarDescricao/' + idConsulta, {
             descricao: descricao
         }, {
             headers: {
@@ -113,7 +113,7 @@ export default function Medicos() {
                                     return (
                                         <tr key={consulta.idConsulta} >
                                             <td>{consulta.idConsulta}</td>
-                                            <td>{consulta.idSituacao}</td>
+                                            <td>{consulta.idSituacaoNavigation.descricao}</td>
                                             <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                             <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                             <td>{consulta.descricao}</td>
