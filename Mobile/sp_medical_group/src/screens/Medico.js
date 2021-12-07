@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ImageBackground, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import {  Text,View } from "react-native";
 import api from "../services/api";
 
 export default function Medico() {
@@ -7,7 +7,7 @@ export default function Medico() {
     const [_data, setData] = useState(new Date())
 
     function buscarMinhasConsultas() {
-        api.get('Consultas/Lista/Minhas', {
+        api.get('/Consultas/Lista/Minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -23,15 +23,8 @@ export default function Medico() {
     useEffect(buscarMinhasConsultas, [])
 
     return (
-
-        <ImageBackground>
-
-            <View>
-
-                <View style={styles.container}>
-                    <Text>Teste</Text>
-                </View>
-            </View>
-        </ImageBackground>
+        <View>
+           <Text>teste</Text>
+        </View>
     )
     }

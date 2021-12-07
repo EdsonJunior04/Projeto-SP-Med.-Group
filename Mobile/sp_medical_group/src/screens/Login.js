@@ -18,8 +18,8 @@ import api from '../services/api'
 
 export default function Login(){
 
-    const [email, setEmail] = useState('adm@adm.com')
-    const [senha, setSenha] = useState('adm12345')
+    const [email, setEmail] = useState('ricardo.lemos@spmedicalgroup.com.br')
+    const [senha, setSenha] = useState('ricardo813')
     const navigation = new useNavigation();
        
 
@@ -40,7 +40,7 @@ export default function Login(){
                 // Redireciona
     
                 await AsyncStorage.setItem('userToken', token);
-                await navigation.navigate('Medico')
+                await navigation.navigate('Lista')
             }
             
         } catch (error) {

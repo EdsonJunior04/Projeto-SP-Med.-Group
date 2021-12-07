@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 const AuthStack = createStackNavigator();
 
 import Login from './src/screens/Login';
-import Medico from './src/screens/Medico';
+import ListaConsulta from './src/screens/Lista';
 import Main from './src/screens/Main';
 
 export default function Stack() {
@@ -24,7 +24,7 @@ export default function Stack() {
         }}>
         <AuthStack.Screen name="Login" component={Login} />
         <AuthStack.Screen name="Main" component={Main} />
-        <AuthStack.Screen name="Medico" component={Medico} />
+        <AuthStack.Screen name="Lista" component={ListaConsulta} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
