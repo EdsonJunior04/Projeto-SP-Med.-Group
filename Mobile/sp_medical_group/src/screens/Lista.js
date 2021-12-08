@@ -48,8 +48,9 @@ export default class ListaConsulta extends Component {
         return (
 
             <ImageBackground
-                source={require('../../assets/images/fundoPerfil.png')}
+                // source={require('../../assets/images/fundoPerfil.png')}
                 style={StyleSheet.absoluteFillObject}
+                style={styles.fundoMedico}
             >
 
 
@@ -59,19 +60,19 @@ export default class ListaConsulta extends Component {
                     >
                         <Image
                             source={require('../../assets/images/logoLogin.png')}
-                            style={styles.logoProjeto}
+                            style={styles.logoSp}
                         />
                     </TouchableOpacity>
 
 
-                    {/* <View style={styles.containerFlatList}> */}
+                    <View style={styles.containerFlatList}>
                         <FlatList
                             contentContainerStyle={styles.mainBodyContent}
                             data={this.state.listaConsultas}
                             keyExtractor={item => item.idConsulta}
                             renderItem={this.renderItem}
                         />
-                    {/* </View> */}
+                    </View>
                 </View>
 
             </ImageBackground>
@@ -79,29 +80,141 @@ export default class ListaConsulta extends Component {
     }
 
     renderItem = ({ item }) => (
-        <View style={styles.container_consultas}>
-        <View style={styles.container_consulta}>
-            <View style={styles.container_dados}>
-                <Text style={styles.titulos}>Paciente</Text>
-                <Text style={styles.dados}>{item.idPacienteNavigation.idUsuarioNavigation.nome}</Text>
+        <View style={styles.teste}>
+            <View style={styles.card}>
+                <View style={styles.tituloCardWrapper}>
+                    <Text>Consultas</Text>
+                </View>
+                <View style={styles.textoCardWrapper}>
+                    <View style={styles.container_dados}>
+                        <Text style={styles.tituloTexto}>Paciente</Text>
+                        <Text style={styles.dados}>{item.idPacienteNavigation.idUsuarioNavigation.nome}</Text>
+                    </View>
+                    <View style={styles.container_dados}>
+                        <Text style={styles.tituloTexto}>Medico</Text>
+                        <Text style={styles.dados}>{item.idMedicoNavigation.idUsuarioNavigation.nome}</Text>
+                    </View>
+                    <View style={styles.container_dados}>
+                        <Text style={styles.tituloTexto}>Situação</Text>
+                        <Text style={styles.dados}>{item.idSituacaoNavigation.descricao}</Text>
+                    </View>
+                    <View style={styles.container_dados}>
+                        <Text style={styles.tituloTexto}>Data da Consulta</Text>
+                        <Text style={styles.dados}>{moment(item.dataConsulta).format('L')}</Text>
+                    </View>
+                    <View style={styles.container_dados}>
+                        <Text style={styles.tituloTexto}>Descrição</Text>
+                        <Text style={styles.dados}>{item.descricao}</Text>
+                    </View>
+                </View>
             </View>
-            <View style={styles.container_dados}>
-                <Text style={styles.titulos}>Situação</Text>
-                <Text style={styles.dados}>{item.idSituacaoNavigation.descricao}</Text>
-            </View>
-            <View style={styles.container_dados}>
-                <Text style={styles.titulos}>Data da Consulta</Text>
-                <Text style={styles.dados}>{moment(item.dataConsulta).format('L')}</Text>
-            </View>
-            <View style={styles.container_dados}>
-                <Text style={styles.titulos}>Descrição</Text>
-            </View>
-            <Text style={styles.descricao}>{item.descricao}</Text>
         </View>
-    </View>
     )
 
 };
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         alignItems: 'center'
+//     },
+
+// logoProjeto: {
+//     marginTop: 70,
+//     width:250,
+//     height: 33,
+// },
+
+//     containerFlatList: {
+//         flex: 1,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         marginTop: 20
+//     },
+
+//     container_consultas: {
+//         width: 300,
+//         height: 144,
+//         marginTop: 25,
+//         flexDirection: 'row',
+//         justifyContent: 'center',
+//     },
+
+//     container_consulta: {
+//         // backgroundColor: '#5049A9',
+//         width: '100%',
+//         height: 144,
+//         borderRadius: 6,
+//         alignItems: 'center',
+//         justifyContent: 'center'
+//     },
+
+// container_dados: {
+//     flexDirection: 'row',
+//     justifyContent: 'center',
+//     width: '90%',
+//     height: 20,
+// },
+
+//     titulos: {
+//         fontSize: 12,
+//         fontWeight: 'bold',
+//         color: '#fff',
+//     },
+
+// dados: {
+//     fontSize: 12,
+//     color: '#fff',
+// },
+
+//     descricao: {
+//         // backgroundColor: '#ff0000',
+//         alignItems: 'center',
+//         width: '90%',
+//         height: 50,
+//         fontSize: 12,
+//         fontWeight: 'light',
+//         color: '#fff',
+//     },
+
+
+//     mainBodyContent: {
+//         flex: 1,
+//         justifyContent: 'space-around',
+//     },
+
+//     card: {
+//         // alignItems: 'center',
+//         width: '85%',
+//         marginBottom: 30
+//     },
+
+//     tituloCard: {
+//         color: 'black',
+//         fontSize: 20,
+//         fontWeight: '600'
+//     },
+
+//     tituloCardWrapper: {
+//         backgroundColor: '#9081A6',
+//         height: 33,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//     },
+
+// textoCardWrapper: {
+//     backgroundColor: '#fff',
+//     borderBottomLeftRadius: 10,
+//     borderBottomRightRadius: 10,
+//     padding: 20,
+// },
+
+
+//     tituloTexto: {
+//         fontWeight: '800',
+//     }
+
+// })
 
 const styles = StyleSheet.create({
     container: {
@@ -109,10 +222,40 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-    logoProjeto: {
+    fundoMedico: {
+        backgroundColor: '#3D8DF2',
+        flex: 1,
+    },
+
+    container_dados: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '90%',
+        height: 25,
+    },
+
+    textoCardWrapper: {
+        backgroundColor: '#fff',
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        padding: 20,
+    },
+
+    dados: {
+        fontSize: 15,
+        color: 'black',
+    },
+
+    logoSp: {
         marginTop: 70,
-        width:250,
+        width: 250,
         height: 33,
+    },
+
+    retangulo: {
+        width: 300,
+        height: 100,
+        backgroundColor: 'red',
     },
 
     containerFlatList: {
@@ -127,12 +270,12 @@ const styles = StyleSheet.create({
     },
 
     mainBodyContent: {
-        flex: 1,
+        // flex: 1,
         justifyContent: 'space-around',
     },
 
     card: {
-        // alignItems: 'center',
+        alignItems: 'center',
         width: '85%',
         marginBottom: 30
     },
@@ -144,8 +287,11 @@ const styles = StyleSheet.create({
     },
 
     tituloCardWrapper: {
-        backgroundColor: '#9081A6',
-        height: 33,
+        backgroundColor: '#45E1E6',
+        height: 50,
+        width: '104%',
+        borderTopRightRadius: 5,
+        borderTopLeftRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
     },

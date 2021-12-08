@@ -18,8 +18,8 @@ import api from '../services/api'
 
 export default function Login(){
 
-    const [email, setEmail] = useState('ricardo.lemos@spmedicalgroup.com.br')
-    const [senha, setSenha] = useState('ricardo813')
+    const [email, setEmail] = useState('bruno@gmail.com')
+    const [senha, setSenha] = useState('bruno623')
     const navigation = new useNavigation();
        
 
@@ -28,9 +28,7 @@ export default function Login(){
             const resposta = await api.post('/Login', {
                 emailUsuario: email,
                 senhaUsuario: senha
-            })
-
-           
+            })           
     
             if (resposta.status == 200) {
 
