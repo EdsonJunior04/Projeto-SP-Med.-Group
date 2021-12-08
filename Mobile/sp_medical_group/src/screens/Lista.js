@@ -55,14 +55,12 @@ export default class ListaConsulta extends Component {
 
 
                 <View style={styles.container}>
-                    <TouchableOpacity
-                        onPress={this.buscarConsulta}
-                    >
-                        <Image
-                            source={require('../../assets/images/logoLogin.png')}
-                            style={styles.logoSp}
-                        />
-                    </TouchableOpacity>
+
+                    <Image
+                        source={require('../../assets/images/logo.png')}
+                        style={styles.logoSp}
+                    />
+
 
 
                     <View style={styles.containerFlatList}>
@@ -113,108 +111,7 @@ export default class ListaConsulta extends Component {
 
 };
 
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         alignItems: 'center'
-//     },
 
-// logoProjeto: {
-//     marginTop: 70,
-//     width:250,
-//     height: 33,
-// },
-
-//     containerFlatList: {
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         marginTop: 20
-//     },
-
-//     container_consultas: {
-//         width: 300,
-//         height: 144,
-//         marginTop: 25,
-//         flexDirection: 'row',
-//         justifyContent: 'center',
-//     },
-
-//     container_consulta: {
-//         // backgroundColor: '#5049A9',
-//         width: '100%',
-//         height: 144,
-//         borderRadius: 6,
-//         alignItems: 'center',
-//         justifyContent: 'center'
-//     },
-
-// container_dados: {
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     width: '90%',
-//     height: 20,
-// },
-
-//     titulos: {
-//         fontSize: 12,
-//         fontWeight: 'bold',
-//         color: '#fff',
-//     },
-
-// dados: {
-//     fontSize: 12,
-//     color: '#fff',
-// },
-
-//     descricao: {
-//         // backgroundColor: '#ff0000',
-//         alignItems: 'center',
-//         width: '90%',
-//         height: 50,
-//         fontSize: 12,
-//         fontWeight: 'light',
-//         color: '#fff',
-//     },
-
-
-//     mainBodyContent: {
-//         flex: 1,
-//         justifyContent: 'space-around',
-//     },
-
-//     card: {
-//         // alignItems: 'center',
-//         width: '85%',
-//         marginBottom: 30
-//     },
-
-//     tituloCard: {
-//         color: 'black',
-//         fontSize: 20,
-//         fontWeight: '600'
-//     },
-
-//     tituloCardWrapper: {
-//         backgroundColor: '#9081A6',
-//         height: 33,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//     },
-
-// textoCardWrapper: {
-//     backgroundColor: '#fff',
-//     borderBottomLeftRadius: 10,
-//     borderBottomRightRadius: 10,
-//     padding: 20,
-// },
-
-
-//     tituloTexto: {
-//         fontWeight: '800',
-//     }
-
-// })
 
 const styles = StyleSheet.create({
     container: {
@@ -247,9 +144,8 @@ const styles = StyleSheet.create({
     },
 
     logoSp: {
-        marginTop: 70,
-        width: 250,
-        height: 33,
+        width: 500,
+        height: 190,
     },
 
     retangulo: {

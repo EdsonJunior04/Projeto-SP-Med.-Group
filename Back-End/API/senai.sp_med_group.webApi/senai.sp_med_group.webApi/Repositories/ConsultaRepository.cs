@@ -94,8 +94,9 @@ namespace senai.sp_med_group.webApi.Repositories
                 Paciente paciente = ctx.Pacientes.FirstOrDefault(u => u.IdUsuario == id);
 
                 int idPaciente = paciente.IdPaciente;
+
                 return ctx.Consulta
-                                .Where(c => c.IdConsulta == idPaciente)
+                                .Where(c => c.IdPaciente == idPaciente)
                                 .Select(p => new Consulta()
                                 {
                                     DataConsulta = p.DataConsulta,

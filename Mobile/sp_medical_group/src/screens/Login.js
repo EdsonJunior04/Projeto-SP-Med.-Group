@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   View,
   Image,
-  ImageBackground,
   TextInput,
 } from 'react-native';
 
@@ -18,8 +17,8 @@ import api from '../services/api'
 
 export default function Login(){
 
-    const [email, setEmail] = useState('bruno@gmail.com')
-    const [senha, setSenha] = useState('bruno623')
+    const [email, setEmail] = useState('roberto.possarle@spmedicalgroup.com.br')
+    const [senha, setSenha] = useState('roberto123')
     const navigation = new useNavigation();
        
 
@@ -38,7 +37,7 @@ export default function Login(){
                 // Redireciona
     
                 await AsyncStorage.setItem('userToken', token);
-                await navigation.navigate('Lista')
+                 navigation.navigate('Lista')
             }
             
         } catch (error) {
@@ -56,7 +55,7 @@ export default function Login(){
                 <View style={styles.loginWrapper}>
 
                     <Image 
-                    source={require('../../assets/images/logoLogin.png')}
+                    source={require('../../assets/images/logo.png')}
                     style={styles.imgLogin}
                     />
 
@@ -113,8 +112,8 @@ const styles = StyleSheet.create({
     },
 
     imgLogin: {
-        height: 38,
-        width: 300,        
+        height: 300,
+        width: 500,        
     },
 
     fundoLogin: {
@@ -140,7 +139,7 @@ const styles = StyleSheet.create({
         width: 229,
         height: 42,
 
-        backgroundColor: '#B7905F',
+        backgroundColor: '#45E1E6',
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',

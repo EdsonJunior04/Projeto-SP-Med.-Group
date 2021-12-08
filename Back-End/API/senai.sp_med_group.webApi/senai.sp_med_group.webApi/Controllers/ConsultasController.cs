@@ -138,7 +138,9 @@ namespace senai.sp_med_group.webApi.Controllers
             {
 
                 int id = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+                
                 int idTipoUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Role).Value);
+
                 List<Consulta> listaConsulta = _consultaRepository.ListarMinhasConsultas(id, idTipoUsuario);
 
                 if (listaConsulta.Count == 0)
