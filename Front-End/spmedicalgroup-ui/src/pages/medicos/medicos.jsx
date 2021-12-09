@@ -9,7 +9,8 @@ import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
 export default function Medicos() {
     const [listaMinhasConsultas, setMinhasConsultas] = useState([])
     const [, setListarConsultas] = useState([])
-    const [idConsulta, setIdConsultas] = useState('')
+    const [idConsulta, setIdConsultas] = useState(0)
+    const [idMedico ] = useState (0)
     const [descricao, setDescricao] = useState('')
     const [isLoading, setisLoading] = useState(false)
 
@@ -51,9 +52,12 @@ export default function Medicos() {
 
         event.preventDefault();
 
-        axios.patch('http://localhost:5000/api/Consultas/AlterarDescricao/' + idConsulta, {
-            descricao: descricao
-        }, {
+        let novadescricao = {
+            idMedico : idMedico,
+            descricao : descricao
+        }
+
+        axios.patch('http://localhost:5000/api/Consultas/AlterarDescricao/' + idConsulta, novadescricao, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }

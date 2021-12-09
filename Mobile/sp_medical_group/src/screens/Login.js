@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  TextInput,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    Image,
+    TextInput,
 } from 'react-native';
 
 
@@ -15,75 +15,74 @@ import { useNavigation } from '@react-navigation/core';
 import api from '../services/api'
 
 
-export default function Login(){
+export default function Login() {
 
     const [email, setEmail] = useState('roberto.possarle@spmedicalgroup.com.br')
     const [senha, setSenha] = useState('roberto123')
     const navigation = new useNavigation();
-       
 
-     realizarLogin = async () => {
+
+    realizarLogin = async () => {
         try {
             const resposta = await api.post('/Login', {
                 emailUsuario: email,
                 senhaUsuario: senha
-            })           
-    
+            })
+
             if (resposta.status == 200) {
 
                 const token = resposta.data.token
 
                 // console.warn(token)
                 // Redireciona
-    
+
                 await AsyncStorage.setItem('userToken', token);
-                 navigation.navigate('Lista')
+                navigation.navigate('Lista')
             }
-            
+
         } catch (error) {
             console.warn(error)
         }
     }
 
-    return(
+    return (
         <View
-          style={StyleSheet.absoluteFillObject}
-          style={styles.fundoLogin}
+            style={StyleSheet.absoluteFillObject}
+            style={styles.fundoLogin}
         >
-
             <View style={styles.loginContainer}>
                 <View style={styles.loginWrapper}>
 
-                    <Image 
-                    source={require('../../assets/images/logo.png')}
-                    style={styles.imgLogin}
+                    <Image
+                        source={require('../../assets/images/logo.png')}
+                        style={styles.imgLogin}
                     />
 
 
                     <View style={styles.inputContainer}>
                         <TextInput
-                        placeholder="email"
-                        keyboardType="email-address"
-                        onChangeText={(campo) => setEmail(campo)}
-                        value={email}
-                        placeholderTextColor='rgba(9, 9, 9, 0.5)'
-                        style={styles.inputLogin}
+                            placeholder="email"
+                            keyboardType="email-address"
+                            onChangeText={(campo) => setEmail(campo)}
+                            value={email}
+                            placeholderTextColor='rgba(9, 9, 9, 0.5)'
+                            style={styles.inputLogin}
                         >
                         </TextInput>
 
                         <TextInput
-                        placeholder="password"
-                        keyboardType="default"
-                        onChangeText={(campo) => setSenha(campo)}
-                        value={senha}
-                        placeholderTextColor='rgba(9, 9, 9, 0.5)'
-                        style={styles.inputLogin}
-                        secureTextEntry={true}>
+                            placeholder="senha"
+                            keyboardType="default"
+                            onChangeText={(campo) => setSenha(campo)}
+                            value={senha}
+                            placeholderTextColor='rgba(9, 9, 9, 0.5)'
+                            style={styles.inputLogin}
+                            secureTextEntry={true}>
                         </TextInput>
-                        
+
                         <TouchableOpacity
-                        style={styles.btnLogin}
-                        onPress={realizarLogin}
+                            style={styles.btnLogin}
+                            onPress={realizarLogin}
                         >
                             <Text style={styles.btnLoginText}>
                                 Login
@@ -98,7 +97,8 @@ export default function Login(){
 }
 
 const styles = StyleSheet.create({
-    loginContainer : {
+
+    loginContainer: {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center'
     },
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
 
     imgLogin: {
         height: 300,
-        width: 500,        
+        width: 500,
     },
 
     fundoLogin: {
@@ -132,18 +132,15 @@ const styles = StyleSheet.create({
         color: '#000',
         backgroundColor: 'rgba(255, 255, 255, 0.85)',
         borderRadius: 5,
-        
     },
 
     btnLogin: {
         width: 229,
         height: 42,
-
         backgroundColor: '#45E1E6',
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-
         marginTop: 10
     },
 

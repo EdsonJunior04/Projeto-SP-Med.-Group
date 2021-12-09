@@ -44,6 +44,11 @@ export default class ListaConsulta extends Component {
     };
 
 
+    logout = async () => {
+        await AsyncStorage.removeItem('userToken');
+        this.props.navigation.navigate('Login');
+    }
+
     render() {
         return (
 
@@ -53,6 +58,9 @@ export default class ListaConsulta extends Component {
                 style={styles.fundoMedico}
             >
 
+                <TouchableOpacity onPress={this.logout} >
+                    <Text style={styles.logout} >Logout</Text>
+                </TouchableOpacity>
 
                 <View style={styles.container}>
 
@@ -81,7 +89,8 @@ export default class ListaConsulta extends Component {
         <View style={styles.teste}>
             <View style={styles.card}>
                 <View style={styles.tituloCardWrapper}>
-                    <Text>Consultas</Text>
+                    <Text>Consulta</Text>
+                    <Text>{item.idConsulta}</Text>
                 </View>
                 <View style={styles.textoCardWrapper}>
                     <View style={styles.container_dados}>
@@ -114,6 +123,18 @@ export default class ListaConsulta extends Component {
 
 
 const styles = StyleSheet.create({
+
+    logout: {
+        backgroundColor: '#45E1E6',
+        borderRadius: 10,
+        width: 62,
+        height: 31,
+        padding: 5,
+        paddingLeft: 8,
+        marginLeft: 8,
+        top: 7,
+    },
+
     container: {
         flex: 1,
         alignItems: 'center'
@@ -166,7 +187,6 @@ const styles = StyleSheet.create({
     },
 
     mainBodyContent: {
-        // flex: 1,
         justifyContent: 'space-around',
     },
 
@@ -176,29 +196,15 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
 
-    tituloCard: {
-        color: 'black',
-        fontSize: 20,
-        fontWeight: '600'
-    },
-
     tituloCardWrapper: {
         backgroundColor: '#45E1E6',
         height: 50,
-        width: '104%',
+        width: 315,
         borderTopRightRadius: 5,
         borderTopLeftRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
     },
-
-    textoCardWrapper: {
-        backgroundColor: '#fff',
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-        padding: 20,
-    },
-
 
     tituloTexto: {
         fontWeight: '800',

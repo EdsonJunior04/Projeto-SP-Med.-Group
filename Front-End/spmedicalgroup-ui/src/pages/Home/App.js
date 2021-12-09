@@ -1,7 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
 import { parseJwt } from "../../services/auth";
-import { Link } from "react-router-dom";
 
 import '../../Assets/CSS/login.css';
 
@@ -22,27 +21,27 @@ export default class Login extends Component {
         evento.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true })
         axios.post('http://localhost:5000/api/Login', {
-          emailUsuario: this.state.email,
-          senhaUsuario: this.state.senha,
+            emailUsuario: this.state.email,
+            senhaUsuario: this.state.senha,
         })
-          .then((resposta) => {
-            if (resposta.status === 200) {
-              localStorage.setItem('usuario-login', resposta.data.token);
-              this.setState({ isLoading: false });
-            //   let base64 = localStorage.getItem('usuario-login').split('.')[1];
-            //   console.log(base64);
-              console.log(this.props);
-              console.log(parseJwt().role)
-              console.log(parseJwt())
-              if (parseJwt().role === '1') {
-                this.props.history.push('/medicos')
-              } else if (parseJwt().role === '2') {
-                this.props.history.push('/paciente')
-              } else if(parseJwt().role === '3') {
-                this.props.history.push('/consultasAdm')
-              }
-            }
-          })
+            .then((resposta) => {
+                if (resposta.status === 200) {
+                    localStorage.setItem('usuario-login', resposta.data.token);
+                    this.setState({ isLoading: false });
+                    //   let base64 = localStorage.getItem('usuario-login').split('.')[1];
+                    //   console.log(base64);
+                    console.log(this.props);
+                    console.log(parseJwt().role)
+                    console.log(parseJwt())
+                    if (parseJwt().role === '1') {
+                        this.props.history.push('/medicos')
+                    } else if (parseJwt().role === '2') {
+                        this.props.history.push('/paciente')
+                    } else if (parseJwt().role === '3') {
+                        this.props.history.push('/consultasAdm')
+                    }
+                }
+            })
             .catch(() => {
                 this.setState({
                     erroMensagem: 'E-mail e/ou senha estão inválidos',
@@ -63,13 +62,13 @@ export default class Login extends Component {
                 <main>
                     <div className="center-login">
 
-                        <Link to="/">
-                            <img
-                                src={logo}
-                                className="icone__login"
-                                alt="logo da Sp Medical Group"
-                            />{' '}
-                        </Link>
+
+                        <img
+                            src={logo}
+                            className="icone__login"
+                            alt="logo da Sp Medical Group"
+                        />{' '}
+
                         <form onSubmit={this.efetuarLogin}>
                             <div className="center-login">
 

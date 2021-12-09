@@ -14,13 +14,13 @@ GO
 --ESPECIALIZACAO
 INSERT INTO ESPECIALIZACAO(tituloEspecializacao)
 VALUES ('Acupuntura'),('Anestesiologia'),('Angiologia'),('Cardiologia'),
-       ('Cirurgia Cardiovascular'),('Cirurgia da Mão'),('Cirurgia do Aparelho Digestivo'),('Cirurgia Geral'),('Cirurgia Pediátrica'),
-	   ('Cirurgia Plástica'),('Cirurgia Torácica'),('Cirurgia Vascular'),('Dermatologia'),('Radioterapia'),('Urologia'),('Pediatria'),('Psiquiatria')
+       ('Cirurgia Cardiovascular'),('Cirurgia da Mï¿½o'),('Cirurgia do Aparelho Digestivo'),('Cirurgia Geral'),('Cirurgia Pediï¿½trica'),
+	   ('Cirurgia Plï¿½stica'),('Cirurgia Torï¿½cica'),('Cirurgia Vascular'),('Dermatologia'),('Radioterapia'),('Urologia'),('Pediatria'),('Psiquiatria')
 GO
 
 --INSTITUICAO
 INSERT INTO INSTITUICAO(nomeFantasia, razaoSocial, endereco, CNPJ)
-VALUES ('Clinica Possarle','SP Medical Group','Av. Barão Limeira, 532, São Paulo, SP','86.400.902/0001-30')
+VALUES ('Clinica Possarle','SP Medical Group','Av. Barï¿½o Limeira, 532, Sï¿½o Paulo, SP','86.400.902/0001-30')
 GO
 
 --USUARIO
@@ -48,15 +48,15 @@ GO
 
 --PACIENTE
 INSERT INTO PACIENTE(idUsuario,dataNascimento,CPF,RG,telefone,endereco)
-VALUES ('2','13/10/1983','94839859000','435225435','11 34567654','Rua Estado de Israel 240, São Paulo, Estado de São Paulo, 04022-000'),
-	   ('3','23/7/2001','73556944057','326543457','11 987656543','Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200'),
-	   ('4','10/10/1978','16839338002','546365253','11 972084453','Av. Ibirapuera - Indianópolis, 2927,  São Paulo - SP, 04029-200'),
-	   ('5','13/10/1985','14332654765','543663625','11 34566543','R. Vitória, 120 - Vila Sao Jorge, Barueri - SP, 06402-030'),
-	   ('6','27/08/1975','91305348010','532544441','11 76566377','R. Ver. Geraldo de Camargo, 66 - Santa Luzia, Ribeirão Pires - SP, 09405-380'),
-	   ('7','21/03/1972','79799299004','545662667','11 954368769','Alameda dos Arapanés, 945 - Indianópolis, São Paulo - SP, 04524-001'),
+VALUES ('2','13/10/1983','94839859000','435225435','11 34567654','Rua Estado de Israel 240,ï¿½Sï¿½o Paulo, Estado de Sï¿½o Paulo, 04022-000'),
+	   ('3','23/7/2001','73556944057','326543457','11 987656543','Av. Paulista, 1578 - Bela Vista, Sï¿½o Paulo - SP, 01310-200'),
+	   ('4','10/10/1978','16839338002','546365253','11 972084453','Av. Ibirapuera - Indianï¿½polis, 2927,  Sï¿½o Paulo - SP, 04029-200'),
+	   ('5','13/10/1985','14332654765','543663625','11 34566543','R. Vitï¿½ria, 120 - Vila Sao Jorge, Barueri - SP, 06402-030'),
+	   ('6','27/08/1975','91305348010','532544441','11 76566377','R. Ver. Geraldo de Camargo, 66 - Santa Luzia, Ribeirï¿½o Pires - SP, 09405-380'),
+	   ('7','21/03/1972','79799299004','545662667','11 954368769','Alameda dos Arapanï¿½s, 945 - Indianï¿½polis, Sï¿½o Paulo - SP, 04524-001'),
 	   ('8','05/03/2018','13771913039','545662668',NULL,'R Sao Antonio, 232 - Vila Universal, Barueri - SP, 06407-140')
 GO
---Atualizou os registros que não possuem data de nascimento conforme especificado pelo cliente
+--Atualizou os registros que nï¿½o possuem data de nascimento conforme especificado pelo cliente
 UPDATE PACIENTE
    SET dataNascimento = '05/03/2018'
  WHERE idPaciente = 7

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import '../../Assets/CSS/consultasAdm.css';
@@ -43,9 +44,9 @@ class consultasAdm extends React.Component {
 
     buscarPacientes = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://localhost:5000/api/Pacientes',{
-            headers : {
-                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+        fetch('http://localhost:5000/api/Pacientes', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
         })
 
@@ -59,9 +60,9 @@ class consultasAdm extends React.Component {
 
     buscarConsultas = () => {
         console.log("Agora vamos fazer a chamada para a API")
-        fetch('http://localhost:5000/api/Consultas',{
-            headers : {
-                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+        fetch('http://localhost:5000/api/Consultas', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
         })
 
@@ -77,6 +78,11 @@ class consultasAdm extends React.Component {
         this.buscarMedicos();
         this.buscarPacientes();
     };
+
+    logout = async () => {
+        this.props.localStorage.clear();
+        this.props.history.push('/');
+    }
 
 
 
@@ -137,8 +143,12 @@ class consultasAdm extends React.Component {
 
                         <div>
                             <p>Administrador</p>
-
                         </div>
+                        <div>
+                            <button className='btn_sair' onClick={this.logout} >Sair</button>
+                        </div>
+
+
 
                     </div>
                 </header>
