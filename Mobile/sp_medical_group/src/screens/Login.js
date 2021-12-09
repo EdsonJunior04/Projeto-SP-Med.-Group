@@ -17,8 +17,8 @@ import api from '../services/api'
 
 export default function Login() {
 
-    const [email, setEmail] = useState('roberto.possarle@spmedicalgroup.com.br')
-    const [senha, setSenha] = useState('roberto123')
+    const [email, setEmail] = useState('helena.souza@spmedicalgroup.com.br')
+    const [senha, setSenha] = useState('helena123')
     const navigation = new useNavigation();
 
 
@@ -33,7 +33,7 @@ export default function Login() {
 
                 const token = resposta.data.token
 
-                // console.warn(token)
+                
                 // Redireciona
 
                 await AsyncStorage.setItem('userToken', token);

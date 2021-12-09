@@ -1,17 +1,18 @@
-import axios from "axios";
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import '../../Assets/CSS/paciente.css';
 
 import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
+import api from "../../services/api";
 
 export default function Pacientes() {
     const [listaMinhasConsultas, setMinhasConsultas] = useState([]);
+    const navigation = useHistory();
 
 
     function buscarMinhasConsultas() {
-        axios('http://localhost:5000/api/Consultas/Lista/Minhas', {
+        api('/Consultas/Lista/Minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -25,6 +26,11 @@ export default function Pacientes() {
             .catch(erro => console.log(erro))
     }
     useEffect(buscarMinhasConsultas, [])
+
+    const logout =  () => {
+        localStorage.removeItem('usuario-login');
+        navigation.push('/')
+    }
 
     return (
         <div>
@@ -41,7 +47,10 @@ export default function Pacientes() {
 
                     <div>
                         <p>Paciente</p>
+                    </div>
 
+                    <div>
+                        <button className='btn_sair' onClick={logout} >Sair</button>
                     </div>
 
                 </div>
@@ -84,7 +93,7 @@ export default function Pacientes() {
                     </table>
                 </section>
             </main>
-            <footer className="espaco">
+            <footer className="espaco_paciente">
                 <div className="container_footer">
                     <div className="center_footer">
                         <Link to="/">

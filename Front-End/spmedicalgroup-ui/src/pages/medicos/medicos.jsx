@@ -1,7 +1,8 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import api from "../../services/api";
 
-import { Link } from "react-router-dom";
+
 
 import '../../Assets/CSS/medicos.css';
 
@@ -10,12 +11,13 @@ export default function Medicos() {
     const [listaMinhasConsultas, setMinhasConsultas] = useState([])
     const [, setListarConsultas] = useState([])
     const [idConsulta, setIdConsultas] = useState(0)
-    const [idMedico ] = useState (0)
+    const [idMedico] = useState(0)
     const [descricao, setDescricao] = useState('')
     const [isLoading, setisLoading] = useState(false)
-
+    const navigation = useHistory();
+    
     function listarConsultas() {
-        axios('http://localhost:5000/api/Consultas', {
+        api('/Consultas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -30,9 +32,14 @@ export default function Medicos() {
     }
     useEffect(listarConsultas, [])
 
+    const logout =  () => {
+        localStorage.removeItem('usuario-login');
+        navigation.push('/')
+    }
+
 
     function buscarMinhasConsultas() {
-        axios('http://localhost:5000/api/Consultas/Lista/Minhas', {
+        api('/Consultas/Lista/Minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -50,14 +57,12 @@ export default function Medicos() {
     function alterarDescricao(event) {
         setisLoading(true)
 
-        event.preventDefault();
-
         let novadescricao = {
-            idMedico : idMedico,
-            descricao : descricao
+            idMedico: idMedico,
+            descricao: descricao
         }
 
-        axios.patch('http://localhost:5000/api/Consultas/AlterarDescricao/' + idConsulta, novadescricao, {
+        api.patch('/Consultas/AlterarDescricao/' + idConsulta, novadescricao, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -90,7 +95,10 @@ export default function Medicos() {
 
                     <div>
                         <p>Médicos</p>
+                    </div>
 
+                    <div>
+                        <button className='btn_sair' onClick={logout} >Sair</button>
                     </div>
 
                 </div>

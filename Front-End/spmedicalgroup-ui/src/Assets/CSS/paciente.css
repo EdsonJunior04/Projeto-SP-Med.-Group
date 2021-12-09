@@ -4,9 +4,21 @@
     box-sizing: border-box;
 }
 
+.btn_sair{
+    width: 90px;
+    height: 30px;
+    background-color: #3D8DF2;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    margin-bottom: inherit;
+    margin: 50px;
+    font-size: 20px;
+}
+
 
 p{
-    margin-right: 90px;
+    margin-right: 30px;
     color: white;
 }
 
@@ -40,13 +52,13 @@ td{
 .container_header_paciente{
     height: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #E1DCF5;
 }
 
 .afastar_list_paciente{
-     margin-top: 150px;
+    margin-top: 150px;
 }
 
 .grid {
@@ -83,6 +95,10 @@ td{
     border-bottom: 1px solid;
     margin-left: 200px;
     padding: 10px;
+}
+
+.espaco_paciente{
+    margin-top: 200px;
 }
 
 .cadastro_ajuste_paciente{

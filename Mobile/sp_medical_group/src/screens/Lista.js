@@ -63,11 +63,12 @@ export default class ListaConsulta extends Component {
                 </TouchableOpacity>
 
                 <View style={styles.container}>
-
-                    <Image
-                        source={require('../../assets/images/logo.png')}
-                        style={styles.logoSp}
-                    />
+                    <TouchableOpacity onPress={this.buscarConsulta} >
+                        <Image
+                            source={require('../../assets/images/logo.png')}
+                            style={styles.logoSp}
+                        />
+                    </TouchableOpacity>
 
 
 

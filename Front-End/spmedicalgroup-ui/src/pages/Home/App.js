@@ -1,5 +1,5 @@
 import { Component } from "react";
-import axios from "axios";
+import api from "../../services/api";
 import { parseJwt } from "../../services/auth";
 
 import '../../Assets/CSS/login.css';
@@ -20,7 +20,7 @@ export default class Login extends Component {
     efetuarLogin = (evento) => {
         evento.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true })
-        axios.post('http://localhost:5000/api/Login', {
+         api.post('/Login', {
             emailUsuario: this.state.email,
             senhaUsuario: this.state.senha,
         })
@@ -28,11 +28,6 @@ export default class Login extends Component {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token);
                     this.setState({ isLoading: false });
-                    //   let base64 = localStorage.getItem('usuario-login').split('.')[1];
-                    //   console.log(base64);
-                    console.log(this.props);
-                    console.log(parseJwt().role)
-                    console.log(parseJwt())
                     if (parseJwt().role === '1') {
                         this.props.history.push('/medicos')
                     } else if (parseJwt().role === '2') {

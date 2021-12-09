@@ -137,7 +137,43 @@ namespace senai.sp_med_group.webApi.Repositories
 
         public List<Consulta> ListarTodas()
         {
-            return ctx.Consulta.Include(c => c.IdMedicoNavigation).ThenInclude(c => c.IdUsuarioNavigation).Include(c => c.IdPacienteNavigation).ThenInclude(c => c.IdUsuarioNavigation).Include(c => c.IdSituacaoNavigation).ToList();
+            return ctx.Consulta
+            .Select(p => new Consulta()
+                                {
+                                    DataConsulta = p.DataConsulta,
+                                    IdConsulta = p.IdConsulta,
+                                    Descricao = p.Descricao,
+                                    IdMedicoNavigation = new Medico()
+                                    {
+                                        Crm = p.IdMedicoNavigation.Crm,
+                                        IdUsuarioNavigation = new Usuario()
+                                        {
+                                            Nome = p.IdMedicoNavigation.IdUsuarioNavigation.Nome,
+                                            Email = p.IdMedicoNavigation.IdUsuarioNavigation.Email
+                                        }
+                                    },
+                                    IdPacienteNavigation = new Paciente()
+                                    {
+                                        Cpf = p.IdPacienteNavigation.Cpf,
+                                        Telefone = p.IdPacienteNavigation.Telefone,
+                                        IdUsuarioNavigation = new Usuario()
+                                        {
+                                            Nome = p.IdPacienteNavigation.IdUsuarioNavigation.Nome,
+                                            Email = p.IdPacienteNavigation.IdUsuarioNavigation.Email
+                                        }
+                                    },
+                                    IdSituacaoNavigation = new Situacao()
+                                    {
+                                        Descricao = p.IdSituacaoNavigation.Descricao
+                                    }
+
+
+                                })
+                // .Include(c => c.IdMedicoNavigation)
+                // .ThenInclude(c => c.IdUsuarioNavigation)
+                // .Include(c => c.IdPacienteNavigation)
+                // .Include(c => c.IdSituacaoNavigation)
+                .ToList();
         }
 
         public void RemoverConsulta(int id)
