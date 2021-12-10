@@ -1,5 +1,5 @@
 import React, { Compon, Component } from 'react';
-import { FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View, StatusBar } from 'react-native';
 import moment from 'moment';
 import api from '../services/api'
 
@@ -53,10 +53,14 @@ export default class ListaConsulta extends Component {
         return (
 
             <ImageBackground
-                // source={require('../../assets/images/fundoPerfil.png')}
                 style={StyleSheet.absoluteFillObject}
                 style={styles.fundoMedico}
             >
+
+            <StatusBar 
+            hidden={false}
+            backgroundColor={'#45E1E6'}
+            />
 
                 <TouchableOpacity onPress={this.logout} >
                     <Text style={styles.logout} >Logout</Text>

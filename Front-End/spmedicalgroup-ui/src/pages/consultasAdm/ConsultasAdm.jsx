@@ -111,7 +111,7 @@ class consultasAdm extends React.Component {
                 idMedico: this.state.idMedico,
                 idSituacao: this.state.idSituacao,
                 descricao: this.state.descricao,
-                dataConsulta: new Date(this.state.data)
+                dataConsulta: new Date(this.state.dataConsulta)
             },
                 {
                     headers: {
