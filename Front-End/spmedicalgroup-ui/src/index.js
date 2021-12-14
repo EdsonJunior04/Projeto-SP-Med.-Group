@@ -12,8 +12,8 @@ import Login from './pages/Home/App';
 import Pacientes from './pages/pacientes/pacientes';
 import Medicos from './pages/medicos/medicos';
 
-import reportWebVitals from './reportWebVitals';
 
+import reportWebVitals from './reportWebVitals';
 
 const routing=(
   <Router>
@@ -24,7 +24,7 @@ const routing=(
       <Route  path="/login" component={ Login } />
       <Route  path="/paciente" component={ Pacientes } />
       <Route  path="/medicos" component={ Medicos } />
-      <Route  path="/notfound" component={ NotFound } />
+      <Route  path="/notfound" component={ NotFound } />      
       <Redirect to="/notfound" />
       </Switch>
      

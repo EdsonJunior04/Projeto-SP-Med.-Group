@@ -606,3 +606,19 @@ E:\SENAI\Projeto SP Med. Group\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_g
 E:\SENAI\Projeto SP Med. Group\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
 E:\SENAI\Projeto SP Med. Group\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
 E:\SENAI\Projeto SP Med. Group\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\DnsClient.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\MongoDB.Bson.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\MongoDB.Driver.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\SharpCompress.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\linux\native\libsnappy64.so
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\linux\native\libzstd.so
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\osx\native\libsnappy64.dylib
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\osx\native\libzstd.dylib
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\46813334840\Documents\Sp\Projeto-SP-Med.-Group\Back-End\API\senai.sp_med_group.webApi\senai.sp_med_group.webApi\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
