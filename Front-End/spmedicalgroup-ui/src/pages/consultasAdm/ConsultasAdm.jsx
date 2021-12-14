@@ -266,13 +266,13 @@ class consultasAdm extends React.Component {
                                         <div className="btn_cadastrar_consulta">
 
                                             {this.state.isLoading && (
-                                                <button className="btn_consulta" disabled>
+                                                <button className="btn_consultaAdm" disabled>
                                                     Loading...{' '}
                                                 </button>
                                             )}
 
                                             {this.state.isLoading === false && (
-                                                <button className="btn_consulta" >Cadastrar</button>
+                                                <button className="btn_consultaAdm" >Cadastrar</button>
                                             )}
                                         </div>
                                     </div>

@@ -72,6 +72,19 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:senai.sp_med_group.webApi.Controllers.LocalizacoesController.ListarTodas">
+            <summary>
+            Lista todas as localizações
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:senai.sp_med_group.webApi.Controllers.LocalizacoesController.Cadastrar(senai.sp_med_group.webApi.Domains.Localizacao)">
+            <summary>
+            Cadastra uma nova localização
+            </summary>
+            <param name="novaLocalizacao"></param>
+            <returns></returns>
+        </member>
         <member name="M:senai.sp_med_group.webApi.Controllers.LoginController.Login(senai.sp_med_group.webApi.ViewModel.LoginViewModel)">
             <summary>
             Loga na aplicação
