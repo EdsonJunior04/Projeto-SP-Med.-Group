@@ -9,52 +9,33 @@ import '../../Assets/CSS/medicos.css';
 import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
 export default function Medicos() {
     const [listaMinhasConsultas, setMinhasConsultas] = useState([])
-    const [, setListarConsultas] = useState([])
     const [idConsulta, setIdConsultas] = useState(0)
     const [idMedico] = useState(0)
     const [descricao, setDescricao] = useState('')
     const [isLoading, setisLoading] = useState(false)
     const navigation = useHistory();
-    
-    function listarConsultas() {
-        api('/Consultas', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
 
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setListarConsultas(resposta.data)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
-    useEffect(listarConsultas, [])
-
-     function realizarConsulta()  {
-        api.patch('/Consultas/Realizar/' + idConsulta 
-        // {
-        //     headers: {
-        //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-        //     }
-        // }
+    function realizarConsulta(id) {
+        console.log(id)
+        api.patch('/Consultas/Realizar/' + id
+            // {
+            //     headers: {
+            //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            //     }
+            // }
         )
             .then((resposta) => {
-                if (resposta.status === 201) {
+                if (resposta.status === 200) {
                     console.log(
-                        'Essa Consulta ' + idConsulta + ' foi realizada!',
+                        'Essa Consulta ' + id + ' foi realizada!',
                     );
+                    buscarMinhasConsultas()
                 }
             })
             .catch((erro) => console.log(erro))
-
-            .then(listarConsultas);
-
     };
-    useEffect(realizarConsulta, [])
 
-    const logout =  () => {
+    const logout = () => {
         localStorage.removeItem('usuario-login');
         navigation.push('/')
     }
@@ -155,7 +136,7 @@ export default function Medicos() {
                                                 year: 'numeric', month: 'short', day: 'numeric',
                                                 hour: 'numeric', minute: 'numeric', hour12: false
                                             }).format(new Date(consulta.dataConsulta))}</td>
-                                            <td><button className='acoes_btn btn' onClick={() => realizarConsulta()}>Realizada</button></td>
+                                            <td><button className='realizar_btn btn' onClick={() => realizarConsulta(consulta.idConsulta)}>Realizada</button></td>
                                         </tr>
                                     )
                                 })

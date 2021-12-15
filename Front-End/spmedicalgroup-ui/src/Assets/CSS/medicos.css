@@ -40,6 +40,20 @@ td{
     width: 330px;
 }
 
+.realizar_btn {
+    border: none;
+    margin: 5px auto;
+    border-radius: 5px;
+    width: 60%;
+    margin-left: 5px;
+    padding: 8px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 10px;    
+    background-color: #3D8DF2;
+    color: #fff;
+  }
+
 .container_header_medico{
     height: 80px;
     display: flex;

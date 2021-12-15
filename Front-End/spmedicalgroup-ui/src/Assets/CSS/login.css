@@ -41,6 +41,10 @@
     margin-top: 50px;
   }
   
+  .input_login::placeholder{
+      color: white;
+  }
+
   .input_login:hover,
   .input_login:focus {
     border: 0;

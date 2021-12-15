@@ -10,6 +10,8 @@ import adm from './pages/consultasAdm/ConsultasAdm';
 import Login from './pages/Home/App';
 import Pacientes from './pages/pacientes/pacientes';
 import Medicos from './pages/medicos/medicos';
+import mapa from './pages/mapa/map';
+import cadastrarMapa from './pages/mapa/cadastroMapa';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -23,7 +25,9 @@ const routing=(
       <Route  path="/login" component={ Login } />
       <Route  path="/paciente" component={ Pacientes } />
       <Route  path="/medicos" component={ Medicos } />
+      <Route  path="/cadastrarMapa" component={ cadastrarMapa } />
       <Route  path="/notfound" component={ NotFound } />      
+      <Route  path="/mapa" component={ mapa } />      
       <Redirect to="/notfound" />
       </Switch>
      

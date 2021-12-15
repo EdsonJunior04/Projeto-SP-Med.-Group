@@ -191,6 +191,11 @@ class consultasAdm extends React.Component {
                         <div>
                             ADMINISTRADOR
                         </div>
+                        <Link to="/cadastrarMapa">
+                        <div>
+                            LOCALIZAÇÕES
+                        </div>
+                        </Link>
                         <div>
                             <button className='btn_sair btn' onClick={this.logout} >Sair</button>
                         </div>
@@ -288,7 +293,7 @@ class consultasAdm extends React.Component {
                                                 })
                                             }
                                         </select>
-                                        <select
+                                        {/* <select
                                             className="input_consulta"
                                             name="idSituacao"
                                             value={this.state.idSituacao}
@@ -300,7 +305,7 @@ class consultasAdm extends React.Component {
                                             <option value={this.state.listaSituacao[2]}>Realizada</option>
 
 
-                                        </select>
+                                        </select> */}
 
 
 
