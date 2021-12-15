@@ -10,6 +10,7 @@ import NotFound from './pages/notFound/NotFound.js';
 import adm from './pages/consultasAdm/ConsultasAdm';
 import Login from './pages/Home/App';
 import Pacientes from './pages/pacientes/pacientes';
+import deletar from './pages/deletar/deletar';
 import Medicos from './pages/medicos/medicos';
 
 
@@ -24,6 +25,7 @@ const routing=(
       <Route  path="/login" component={ Login } />
       <Route  path="/paciente" component={ Pacientes } />
       <Route  path="/medicos" component={ Medicos } />
+      <Route  path="/deletar" component={ deletar } />
       <Route  path="/notfound" component={ NotFound } />      
       <Redirect to="/notfound" />
       </Switch>

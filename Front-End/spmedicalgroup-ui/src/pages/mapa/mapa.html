@@ -27,7 +27,7 @@
     <div id="map"></div>
 
     <script>
-        fetch('http://localhost:5000/api/Localizacoes')
+        fetch('http://192.168.0.26:5000/api/Localizacoes')
             .then(resposta => resposta.json())
             .then(itens => montarMapa(itens))
             .catch(error => console.log(error))
@@ -54,7 +54,7 @@
                     "click",
                     (function (marker, i) {
                         return function () {
-                            infoWindow.setContent(itens[i].id);
+                            infoWindow.setContent(itens[i].nome);
                             infoWindow.open(map, marker);
                         };
                     })(marker, i)

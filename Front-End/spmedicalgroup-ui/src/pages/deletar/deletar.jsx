@@ -7,7 +7,7 @@ import '../../Assets/CSS/consultasAdm.css';
 import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
 
 
-class consultasAdm extends React.Component {
+class deletar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -101,23 +101,24 @@ class consultasAdm extends React.Component {
         this.setState({ [campo.target.name]: campo.target.value });
     };
 
-    deletarConsulta = async (idConsulta) => {
-        idConsulta.preventDefault();
-        // console.log(idConsulta)
-        await api.delete('/Consultas/Remover' + idConsulta, {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+    deletarConsulta = async (ev) => {
+        ev.preventDefault();
+        try {
+
+
+            const resposta = await api.delete('/Consultas/Remover', {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            if (resposta.status === 200) {
+                this.setState({ listaConsultas: resposta.data });
             }
-        })
-            .then((resposta) => resposta.json())
-            .then((respostaJson) => {
-                console.log(respostaJson)
-            })
-            .catch(() => {
-                console.log("Erro")
-            })
+        }
 
-
+        catch (error) {
+            console.warn(error)
+        }
 
 
     };
@@ -171,7 +172,7 @@ class consultasAdm extends React.Component {
                         </Link>
 
                         <div>
-                            Mapa
+                            DELETAR
                         </div>
                         <div>
                             <button className='btn_sair' onClick={this.logout} >Sair</button>
@@ -222,91 +223,7 @@ class consultasAdm extends React.Component {
                     </section>
 
 
-                    {/* Cadastro de tipos de consulta */}
-                    <div className="afastar_list_consulta">
-                        <section className="cadastro_consulta grid ">
-                            <h2 className="letra_tam">Cadastro de Consultas</h2>
-                            <div className="cadastro_ajuste_consulta">
-                                <form onSubmit={this.cadastrarConsulta} >
-                                    <div>
-
-                                        <select
-                                            className="input_consulta"
-                                            name="idPaciente"
-                                            value={this.state.idPaciente}
-                                            onChange={this.atualizaStateCampo}>
-                                            <option value="0">Selecione o paciente</option>
-
-                                            {
-                                                this.state.listaPacientes.map((paciente) => {
-                                                    return (
-                                                        <option key={paciente.idPaciente} value={paciente.idPaciente}>
-                                                            {paciente.idUsuarioNavigation.nome}
-                                                        </option>
-                                                    )
-                                                })
-                                            }
-                                        </select>
-
-                                        <select
-                                            className="input_consulta"
-                                            name="idMedico"
-                                            value={this.state.idMedico}
-                                            onChange={this.atualizaStateCampo}>
-                                            <option value="0">Selecione o Médico</option>
-
-                                            {
-                                                this.state.listaMedicos.map((medico) => {
-                                                    return (
-                                                        <option key={medico.idMedico} value={medico.idMedico}>
-                                                            {medico.idUsuarioNavigation.nome}
-                                                        </option>
-                                                    )
-                                                })
-                                            }
-                                        </select>
-                                        <select
-                                            className="input_consulta"
-                                            name="idSituacao"
-                                            value={this.state.idSituacao}
-                                            onChange={this.atualizaStateCampo}>
-                                            <option value="0">Selecione a Situação</option>
-
-                                            <option value={this.state.listaSituacao[0]}>Agendada</option>
-                                            <option value={this.state.listaSituacao[1]}>Cancelada</option>
-                                            <option value={this.state.listaSituacao[2]}>Realizada</option>
-
-
-                                        </select>
-
-
-
-                                        <input
-                                            className="input_consulta"
-                                            type="datetime-local"
-                                            name="dataConsulta"
-                                            value={this.state.dataConsulta}
-                                            onChange={this.atualizaStateCampo}
-                                        />
-
-                                        <div className="btn_cadastrar_consulta">
-
-                                            {this.state.isLoading && (
-                                                <button className="btn_consultaAdm" disabled>
-                                                    Loading...{' '}
-                                                </button>
-                                            )}
-
-                                            {this.state.isLoading === false && (
-                                                <button className="btn_consultaAdm" >Cadastrar</button>
-                                            )}
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </section>
-                    </div>
-
+                    
                     {/* Deletar Consulta */}
 
                     <div className="afastar_list_consulta">
@@ -373,4 +290,4 @@ class consultasAdm extends React.Component {
         )
     }
 };
-export default consultasAdm;
+export default deletar;
