@@ -99,10 +99,10 @@ export default class Login extends Component {
                                 }
 
                                 {
-                                    // Caso seja false, renderiza o botão habilitado com o texto 'Login'
+
                                     this.state.isLoading === false && (
                                         <button
-                                            className="btn_login"
+                                            className="btn_login btn"
                                             id="btn_login"
                                             type="submit"
                                             disabled={

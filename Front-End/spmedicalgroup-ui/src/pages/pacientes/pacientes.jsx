@@ -50,7 +50,7 @@ export default function Pacientes() {
                     </div>
 
                     <div>
-                        <button className='btn_sair' onClick={logout} >Sair</button>
+                        <button className='btn_sair btn' onClick={logout} >Sair</button>
                     </div>
 
                 </div>

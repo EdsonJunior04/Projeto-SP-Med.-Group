@@ -90,7 +90,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Authorize(Roles = "3")]
+        //[Authorize(Roles = "3")]
         [HttpPatch("Cancelar/{id:int}")]
         public IActionResult Cancelar(int id)
         {
@@ -116,6 +116,47 @@ namespace senai.sp_med_group.webApi.Controllers
                 return StatusCode(200, new
                 {
                     Mensagem = "A consulta foi cancelada"
+                });
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Realiza uma consulta
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //[Authorize(Roles = "3")]
+        [HttpPatch("Realizar/{id:int}")]
+        public IActionResult Realizar(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "O ID está incorreto"
+                    });
+                }
+
+                if (_consultaRepository.BuscarPorId(id) == null)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "Não existe consulta com esse ID"
+                    });
+                }
+                _consultaRepository.RealizarConsulta(id);
+
+                return StatusCode(200, new
+                {
+                    Mensagem = "A consulta foi realizada"
                 });
             }
             catch (Exception error)

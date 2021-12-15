@@ -32,6 +32,28 @@ export default function Medicos() {
     }
     useEffect(listarConsultas, [])
 
+     function realizarConsulta()  {
+        api.patch('/Consultas/Realizar/' + idConsulta 
+        // {
+        //     headers: {
+        //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+        //     }
+        // }
+        )
+            .then((resposta) => {
+                if (resposta.status === 201) {
+                    console.log(
+                        'Essa Consulta ' + idConsulta + ' foi realizada!',
+                    );
+                }
+            })
+            .catch((erro) => console.log(erro))
+
+            .then(listarConsultas);
+
+    };
+    useEffect(realizarConsulta, [])
+
     const logout =  () => {
         localStorage.removeItem('usuario-login');
         navigation.push('/')
@@ -98,7 +120,7 @@ export default function Medicos() {
                     </div>
 
                     <div>
-                        <button className='btn_sair' onClick={logout} >Sair</button>
+                        <button className='btn_sair btn' onClick={logout} >Sair</button>
                     </div>
 
                 </div>
@@ -133,6 +155,7 @@ export default function Medicos() {
                                                 year: 'numeric', month: 'short', day: 'numeric',
                                                 hour: 'numeric', minute: 'numeric', hour12: false
                                             }).format(new Date(consulta.dataConsulta))}</td>
+                                            <td><button className='acoes_btn btn' onClick={() => realizarConsulta()}>Realizada</button></td>
                                         </tr>
                                     )
                                 })
@@ -174,7 +197,7 @@ export default function Medicos() {
                                 </button>
                             )}
                             {!isLoading && (
-                                <button className='btn_medico' type='submit'>
+                                <button className='btn_medico btn' type='submit'>
                                     Alterar
                                 </button>
                             )}

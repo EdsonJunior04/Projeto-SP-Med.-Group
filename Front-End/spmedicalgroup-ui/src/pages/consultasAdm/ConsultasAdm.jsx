@@ -101,24 +101,42 @@ class consultasAdm extends React.Component {
         this.setState({ [campo.target.name]: campo.target.value });
     };
 
-    deletarConsulta = async (idConsulta) => {
-        idConsulta.preventDefault();
-        // console.log(idConsulta)
-        await api.delete('/Consultas/Remover' + idConsulta, {
+    deletarConsulta = (consulta) => {
+        api.delete('/Consultas/Remover/' + consulta.idConsulta, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
             }
         })
-            .then((resposta) => resposta.json())
-            .then((respostaJson) => {
-                console.log(respostaJson)
+            .then((resposta) => {
+                if (resposta.status === 204) {
+                    console.log(
+                        'Consulta ' + consulta.idConsulta + ' foi excluída!',
+                    );
+                }
             })
-            .catch(() => {
-                console.log("Erro")
+            .catch((erro) => console.log(erro))
+
+            .then(this.buscarConsulta);
+
+    };
+    cancelarConsulta = (consulta) => {
+        api.patch('/Consultas/Cancelar/' + consulta.idConsulta, 
+        // {
+        //     headers: {
+        //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+        //     }
+        // }
+        )
+            .then((resposta) => {
+                if (resposta.status === 204) {
+                    console.log(
+                        'Essa Consulta ' + consulta.idConsulta + ' foi cancelada!',
+                    );
+                }
             })
+            .catch((erro) => console.log(erro))
 
-
-
+            .then(this.buscarConsulta);
 
     };
 
@@ -171,10 +189,10 @@ class consultasAdm extends React.Component {
                         </Link>
 
                         <div>
-                            Mapa
+                            ADMINISTRADOR
                         </div>
                         <div>
-                            <button className='btn_sair' onClick={this.logout} >Sair</button>
+                            <button className='btn_sair btn' onClick={this.logout} >Sair</button>
                         </div>
 
 
@@ -211,6 +229,11 @@ class consultasAdm extends React.Component {
                                                     year: 'numeric', month: 'short', day: 'numeric',
                                                     hour: 'numeric', minute: 'numeric', hour12: false
                                                 }).format(new Date(consulta.dataConsulta))}</td>
+                                                <td>
+                                                    <button className='acoes_btn btn' onClick={() => this.cancelarConsulta(consulta)}>Cancelar</button>
+                                                    <button className='acoes_btn btn' onClick={() => this.deletarConsulta(consulta)}>Excluir</button>
+                                                    </td>
+                                                
                                             </tr>
 
 
@@ -292,13 +315,13 @@ class consultasAdm extends React.Component {
                                         <div className="btn_cadastrar_consulta">
 
                                             {this.state.isLoading && (
-                                                <button className="btn_consultaAdm" disabled>
+                                                <button className="btn_consultaAdm " disabled>
                                                     Loading...{' '}
                                                 </button>
                                             )}
 
                                             {this.state.isLoading === false && (
-                                                <button className="btn_consultaAdm" >Cadastrar</button>
+                                                <button className="btn_consultaAdm btn" >Cadastrar</button>
                                             )}
                                         </div>
                                     </div>
@@ -307,52 +330,7 @@ class consultasAdm extends React.Component {
                         </section>
                     </div>
 
-                    {/* Deletar Consulta */}
 
-                    <div className="afastar_list_consulta">
-                        <section className="cadastro_consulta grid ">
-                            <h2 className="letra_tam">Cadastro de Consultas</h2>
-                            <div className="cadastro_ajuste_consulta">
-                                <form onSubmit={this.deletarConsulta} >
-                                    <div>
-
-                                        <select
-                                            className="input_alterar"
-                                            name="consulta"
-                                            id="consulta"
-                                            value={this.state.idConsulta}
-                                            onChange={this.atualizaStateCampo}
-                                        >
-                                            <option value="0">Selecione a Consulta</option>
-                                            {
-                                                this.state.listaConsultas.map((consulta) => {
-                                                    return (
-                                                        <option key={consulta.idConsulta} value={consulta.idConsulta}>
-                                                            Id: {consulta.idConsulta} / Paciente: {consulta.idPacienteNavigation.idUsuarioNavigation.nome} / Medico:{consulta.idMedicoNavigation.idUsuarioNavigation.nome} / Data:{Intl.DateTimeFormat("pt-BR", {
-                                                                year: 'numeric', month: 'numeric', day: 'numeric',
-                                                                hour: 'numeric', minute: 'numeric', hour12: false
-                                                            }).format(new Date(consulta.dataConsulta))}
-                                                        </option>
-                                                    )
-                                                })}
-                                        </select>
-                                        <div className="btn_cadastrar_consulta">
-
-                                            {this.state.isLoading && (
-                                                <button className="btn_consultaAdm" disabled>
-                                                    Loading...{' '}
-                                                </button>
-                                            )}
-
-                                            {this.state.isLoading === false && (
-                                                <button className="btn_consultaAdm" >Deletar</button>
-                                            )}
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </section>
-                    </div>
                 </main>
 
                 <footer>

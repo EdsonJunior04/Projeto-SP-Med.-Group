@@ -14,14 +14,6 @@
     flex-direction: column;
 }
 
-/* .input_login{
-    width: 480px;
-    margin-top: 80px;
-    border-radius: 15px;
-    height: 30px;
-    border-bottom: 1px solid ;
-} */
-
 .btn_login{
     height: 50px;
     margin-top: 50px;
@@ -30,6 +22,7 @@
     font-size: 20px;
     color: white;
     background-color: #3D8DF2;
+    border: none;
 }
 
 .icone__login{

@@ -45,6 +45,14 @@ namespace senai.sp_med_group.webApi.Repositories
             ctx.Consulta.Update(consultaBuscada);
             ctx.SaveChanges();
         }
+        public void RealizarConsulta(int Id)
+        {
+            Consulta consultaBuscada = BuscarPorId(Id);
+            consultaBuscada.IdSituacao = 3;
+            consultaBuscada.Descricao = "Consulta Realizada";
+            ctx.Consulta.Update(consultaBuscada);
+            ctx.SaveChanges();
+        }
 
         public List<Consulta> ListarMinhasConsultas(int id, int idTipoUsuario)
         {

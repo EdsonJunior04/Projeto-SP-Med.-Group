@@ -56,6 +56,28 @@ td{
     margin: 0 auto;
 }
 
+.acoes_btn {
+    border: none;
+    margin: 5px auto;
+    border-radius: 5px;
+    width: 45%;
+    margin-left: 5px;
+    padding: 8px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 10px;    
+    background-color: #3D8DF2;
+    color: #fff;
+  }
+
+  .btn:hover{
+      background-color: #D5E1FA;
+      cursor: pointer;
+      color:  #3D8DF2;
+  }
+
+  
+
 .cadastro_consulta{
     box-shadow: -5px 4px 20px rgba(0, 0, 0, 0.7), 5px 4px 20px 2px rgba(0, 0, 0, 0.7);
     background-color: #D5E1FA;
