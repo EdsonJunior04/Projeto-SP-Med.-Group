@@ -38,11 +38,20 @@ td{
 }
 
 .container_header_consulta{
-    height: 80px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #E1DCF5;
+}
+
+
+.header_container{
+    justify-content: f;
+}
+
+a{
+    padding: 20px;
 }
 
 .afastar_list_consulta{
@@ -54,6 +63,22 @@ td{
     max-width: 1200px;
 
     margin: 0 auto;
+}
+.org_heade_adm{
+    width: 630px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.org_heade_adm a{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 34px;
+}
+
+.tamanho{
+    font-size: 50px;
 }
 
 .acoes_btn {
@@ -139,6 +164,29 @@ td{
     font-size: 20px;
     line-height: 28px;
     text-decoration:none ;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.container {
+    width: 100%;
+  }
+
+  .header_Home{
+    
+    height: 101px;
+    
+}
+
+.div_header{
+    
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D5E1FA;
 }
 
 .container_footer {

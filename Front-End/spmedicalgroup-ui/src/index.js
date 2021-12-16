@@ -12,6 +12,7 @@ import Pacientes from './pages/pacientes/pacientes';
 import Medicos from './pages/medicos/medicos';
 import mapa from './pages/mapa/map';
 import cadastrarMapa from './pages/mapa/cadastroMapa';
+import Header from './pages/Header/header';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -28,6 +29,7 @@ const routing=(
       <Route  path="/cadastrarMapa" component={ cadastrarMapa } />
       <Route  path="/notfound" component={ NotFound } />      
       <Route  path="/mapa" component={ mapa } />      
+      <Route  path="/header" component={ Header } />      
       <Redirect to="/notfound" />
       </Switch>
      

@@ -62,8 +62,11 @@ class cadastrarMapa extends React.Component {
             this.setState({ isLoading: true });
 
 
-
-            const resposta = api.post('/Localizacoes', {
+            const resposta = api.post('/Localizacoes',{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            }, {
                 Nome: this.state.nomePaciente,
                 latitude: this.state.latitude,
                 Longitude: this.state.longitude,

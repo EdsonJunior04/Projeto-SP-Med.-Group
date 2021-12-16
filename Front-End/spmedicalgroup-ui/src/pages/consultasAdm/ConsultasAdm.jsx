@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import '../../Assets/CSS/header.css'
 import api from '../../services/api';
 import '../../Assets/CSS/consultasAdm.css';
 
@@ -20,11 +21,15 @@ class consultasAdm extends React.Component {
             idPaciente: 0,
             descricao: '',
             dataConsulta: new Date(),
+            active: false,
+            setMode: false,
             isLoading: false
         };
     };
 
-
+     toggleMode = () => {
+        this.setState({setMode: true})
+    }
 
     buscarMedicos = async () => {
         try {
@@ -120,12 +125,12 @@ class consultasAdm extends React.Component {
 
     };
     cancelarConsulta = (consulta) => {
-        api.patch('/Consultas/Cancelar/' + consulta.idConsulta, 
-        // {
-        //     headers: {
-        //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-        //     }
-        // }
+        api.patch('/Consultas/Cancelar/' + consulta.idConsulta,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            }
         )
             .then((resposta) => {
                 if (resposta.status === 204) {
@@ -154,11 +159,7 @@ class consultasAdm extends React.Component {
                 descricao: this.state.descricao,
                 dataConsulta: new Date(this.state.dataConsulta)
             },
-                {
-                    headers: {
-                        Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
-                    },
-                },
+
             );
             if (resposta.status === 201) {
                 console.warn('Consulta realizada com sucesso.');
@@ -178,7 +179,7 @@ class consultasAdm extends React.Component {
             //JSX
             <div>
 
-                <header>
+<header>
                     <div className="container_header_consulta">
                         <Link to="/">
                             <img
@@ -237,8 +238,8 @@ class consultasAdm extends React.Component {
                                                 <td>
                                                     <button className='acoes_btn btn' onClick={() => this.cancelarConsulta(consulta)}>Cancelar</button>
                                                     <button className='acoes_btn btn' onClick={() => this.deletarConsulta(consulta)}>Excluir</button>
-                                                    </td>
-                                                
+                                                </td>
+
                                             </tr>
 
 
@@ -352,7 +353,7 @@ class consultasAdm extends React.Component {
                         </div>
                     </div>
                 </footer>
-            </div>
+            </div >
         )
     }
 };

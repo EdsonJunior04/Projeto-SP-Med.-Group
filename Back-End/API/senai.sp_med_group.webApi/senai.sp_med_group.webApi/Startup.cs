@@ -26,7 +26,7 @@ namespace senai.sp_med_group.webApi
                 options.AddPolicy("CorsPolicy",
                                 builder =>
                                 {
-                                    builder.WithOrigins("*")
+                                    builder.WithOrigins("http://localhost:3000")
                                     .AllowAnyHeader()
                                     .AllowAnyMethod();
                                 });

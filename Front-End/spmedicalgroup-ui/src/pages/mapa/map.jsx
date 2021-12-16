@@ -1,5 +1,7 @@
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 import { Component } from "react";
+import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
+// import { Link } from "react-router-dom";
 import api from '../../services/api';
 
 class maps extends Component {
@@ -14,7 +16,11 @@ class maps extends Component {
     };
 
     BuscarLocalizacoes = () => {
-        api("/Localizacoes")
+        api("/Localizacoes",{
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
             .then(resposta => {
                 if (resposta.status === 200) {
                     this.setState({ listaLocalizacoes: resposta.data });
@@ -33,11 +39,34 @@ class maps extends Component {
     componentDidMount() {
         this.BuscarLocalizacoes()
     }
+    logout = async () => {
+        localStorage.removeItem('usuario-login');
+        this.props.history.push('/');
+    };
 
     render() {
         return (
             <div>
                 <main>
+
+                <header className=" container header_Home" id="header">
+                <div className=" div_header container">
+                    <div>
+                        <a href="#header">
+                            <img className="img_header" src={logo} alt="" />
+                        </a>
+                    </div>
+                    <div className="org_heade_adm">
+                        <a href="/">Home</a>
+                        <a href="/admlistar">Consultas</a>
+                        <a href="/admusuario">Cadastrar Usuario</a>
+                        <a href="/adm">Adminitrador</a>
+
+
+                    </div>
+                </div>
+            </header>
+
                     <Map google={this.props.google} zoom={12}
                         initialCenter={{
                             lat: -23.53642760296254,
@@ -75,5 +104,5 @@ class maps extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: ("AIzaSyDBAKlR7YNlROT-q03Ra_Qpl_n_NiQRmdQ")
+    apiKey: ("AIzaSyBMkmry7eDc01lkICfWmMrdv18FsX_oDOQ")
 })(maps)

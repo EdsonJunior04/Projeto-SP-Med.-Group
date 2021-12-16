@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../services/api";
+import '../../Assets/CSS/header.css'
 
 
 
@@ -14,15 +15,20 @@ export default function Medicos() {
     const [descricao, setDescricao] = useState('')
     const [isLoading, setisLoading] = useState(false)
     const navigation = useHistory();
+    const [active, setMode] = useState(false);
+
+    const ToggleMode = () => {
+        setMode(!active)
+    }
 
     function realizarConsulta(id) {
         console.log(id)
-        api.patch('/Consultas/Realizar/' + id
-            // {
-            //     headers: {
-            //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-            //     }
-            // }
+        api.patch('/Consultas/Realizar/' + id,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            }
         )
             .then((resposta) => {
                 if (resposta.status === 200) {
@@ -86,26 +92,9 @@ export default function Medicos() {
     return (
         <div>
 
-            <header>
-                <div className="container_header_medico">
-                    <Link to="/">
-                        <img
-                            src={logo}
-                            className="icone_medico"
-                            alt="logo da Sp Medical Group"
-                        />{' '}
-                    </Link>
-
-                    <div>
-                        <p>Médicos</p>
-                    </div>
-
-                    <div>
-                        <button className='btn_sair btn' onClick={logout} >Sair</button>
-                    </div>
-
-                </div>
-            </header>
+               <header>
+                   <iframe src="../header/header.html" frameborder="0"></iframe>
+               </header>
 
             <main className="afastar_list_medico ">
                 {/* Lista de tipos de consulta */}
