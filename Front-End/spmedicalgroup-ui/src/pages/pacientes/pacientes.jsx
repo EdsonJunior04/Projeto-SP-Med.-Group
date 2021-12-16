@@ -9,6 +9,10 @@ import api from "../../services/api";
 export default function Pacientes() {
     const [listaMinhasConsultas, setMinhasConsultas] = useState([]);
     const navigation = useHistory();
+    const [active, setMode] = useState(false);
+    const ToggleMode = () => {
+        setMode(!active)
+    }
 
 
     function buscarMinhasConsultas() {
@@ -35,7 +39,23 @@ export default function Pacientes() {
     return (
         <div>
 
-            <header>
+<header>
+                <div>
+                    <div className={active ? "icon iconActive" : "icon"} onClick={ToggleMode}>
+                        <div className="hamburguer hamburguerIcon"></div>
+                    </div>
+                    <div className={active ? 'menu menuOpen ' : 'menu menuClose'}>
+                        <div className='list '>
+                            <ul className='listItems'>
+                                <li>PERFIL</li>
+                                <li>ALTERAR DESCRIÇÃO</li>
+                                <li>LISTAR CONSULTAS</li>
+                                <li><button className='btn_sair btn' onClick={logout} >Sair</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="container_header_paciente">
                     <Link to="/">
                         <img
@@ -48,12 +68,8 @@ export default function Pacientes() {
                     <div>
                         <p>Paciente</p>
                     </div>
-
-                    <div>
-                        <button className='btn_sair btn' onClick={logout} >Sair</button>
                     </div>
 
-                </div>
             </header>
 
             <main className="afastar_list_paciente ">

@@ -8033,19 +8033,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ejr_0\\.nuget\\packages\\": {}
+    "C:\\Users\\46813334840\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
+      "projectUniqueName": "C:\\Users\\46813334840\\Documents\\SP\\Projeto-SP-Med.-Group\\Back-End\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
       "projectName": "senai.sp_med_group.webApi",
-      "projectPath": "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
-      "packagesPath": "C:\\Users\\ejr_0\\.nuget\\packages\\",
-      "outputPath": "E:\\SENAI\\Projeto SP Med. Group\\Projeto-SP-Med.-Group\\Back-End\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\obj\\",
+      "projectPath": "C:\\Users\\46813334840\\Documents\\SP\\Projeto-SP-Med.-Group\\Back-End\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi.csproj",
+      "packagesPath": "C:\\Users\\46813334840\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\46813334840\\Documents\\SP\\Projeto-SP-Med.-Group\\Back-End\\API\\senai.sp_med_group.webApi\\senai.sp_med_group.webApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ejr_0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\46813334840\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8128,7 +8128,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

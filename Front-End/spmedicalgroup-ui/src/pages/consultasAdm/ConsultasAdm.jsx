@@ -22,13 +22,12 @@ class consultasAdm extends React.Component {
             descricao: '',
             dataConsulta: new Date(),
             active: false,
-            setMode: false,
             isLoading: false
         };
     };
 
-     toggleMode = () => {
-        this.setState({setMode: true})
+    toggleMode = () => {
+        this.setState({ active: !this.state.active })
     }
 
     buscarMedicos = async () => {
@@ -36,7 +35,7 @@ class consultasAdm extends React.Component {
 
             const resposta = await api.get('/Medicos', {
                 headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
                 }
             })
             if (resposta.status === 200) {
@@ -107,9 +106,9 @@ class consultasAdm extends React.Component {
     };
 
     deletarConsulta = (consulta) => {
-        api.delete('/Consultas/Remover/' + consulta.idConsulta, {
+        api.delete('/Consultas/Remover/' + consulta.idConsulta,{
             headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
         })
             .then((resposta) => {
@@ -126,11 +125,11 @@ class consultasAdm extends React.Component {
     };
     cancelarConsulta = (consulta) => {
         api.patch('/Consultas/Cancelar/' + consulta.idConsulta,
-            {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-                }
+        {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
+        }
         )
             .then((resposta) => {
                 if (resposta.status === 204) {
@@ -179,37 +178,45 @@ class consultasAdm extends React.Component {
             //JSX
             <div>
 
-<header>
-                    <div className="container_header_consulta">
+                <header>
+                    <div>
+                        <div className={this.state.active ? "icon iconActive" : "icon"} onClick={this.toggleMode}>
+                            <div className="hamburguer hamburguerIcon"></div>
+                        </div>
+                        <div className={this.state.active ? 'menu menuOpen ' : 'menu menuClose'}>
+                            <div className='list '>
+                                <ul className='listItems'>
+                                    <Link className='Link' to=""><li>PERFIL</li></Link>
+                                    <a className='Link' href="#cadastro"><li>CADASTRAR CONSULTA</li></a>
+                                    <a className='Link' href="#lista"><li>LISTAR CONSULTAS</li></a>
+                                    <Link className='Link' to="/mapa"><li>MAPAS</li></Link>
+                                    <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
+                                    <li><button className='btn_sair btn' onClick={this.logout} >Sair</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="container_header_paciente">
                         <Link to="/">
                             <img
                                 src={logo}
-                                className="icone_consulta"
+                                className="icone_paciente"
                                 alt="logo da Sp Medical Group"
                             />{' '}
                         </Link>
 
                         <div>
-                            ADMINISTRADOR
+                            <p>ADIMINISRADOR</p>
                         </div>
-                        <Link to="/cadastrarMapa">
-                        <div>
-                            LOCALIZAÇÕES
-                        </div>
-                        </Link>
-                        <div>
-                            <button className='btn_sair btn' onClick={this.logout} >Sair</button>
-                        </div>
-
-
-
                     </div>
+
                 </header>
 
                 <main className="afastar_list_consulta ">
                     {/* Lista de tipos de consulta */}
                     <section className="lista_consulta grid">
-                        <h2>Lista de Consultas</h2>
+                        <h2 id="lista">Lista de Consultas</h2>
                         <table>
                             <thead >
                                 <tr>
@@ -252,9 +259,9 @@ class consultasAdm extends React.Component {
 
 
                     {/* Cadastro de tipos de consulta */}
-                    <div className="afastar_list_consulta">
+                    <div className="afastar_list_consulta" id="cadastro">
                         <section className="cadastro_consulta grid ">
-                            <h2 className="letra_tam">Cadastro de Consultas</h2>
+                            <h2 className="letra_tam" >Cadastro de Consultas</h2>
                             <div className="cadastro_ajuste_consulta">
                                 <form onSubmit={this.cadastrarConsulta} >
                                     <div>

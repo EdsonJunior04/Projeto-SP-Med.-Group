@@ -23,13 +23,11 @@ export default function Medicos() {
 
     function realizarConsulta(id) {
         console.log(id)
-        api.patch('/Consultas/Realizar/' + id,
-            {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-                }
+        api.patch('/Consultas/Realizar/' + id,{
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
-        )
+        })
             .then((resposta) => {
                 if (resposta.status === 200) {
                     console.log(
@@ -92,9 +90,38 @@ export default function Medicos() {
     return (
         <div>
 
-               <header>
-                   <iframe src="../header/header.html" frameborder="0"></iframe>
-               </header>
+            <header>
+                <div>
+                    <div className={active ? "icon iconActive" : "icon"} onClick={ToggleMode}>
+                        <div className="hamburguer hamburguerIcon"></div>
+                    </div>
+                    <div className={active ? 'menu menuOpen ' : 'menu menuClose'}>
+                        <div className='list '>
+                            <ul className='listItems'>
+                                <li>PERFIL</li>
+                                <li>ALTERAR DESCRIÇÃO</li>
+                                <li>LISTAR CONSULTAS</li>
+                                <li><button className='btn_sair btn' onClick={logout} >Sair</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="container_header_paciente">
+                    <Link to="/">
+                        <img
+                            src={logo}
+                            className="icone_paciente"
+                            alt="logo da Sp Medical Group"
+                        />{' '}
+                    </Link>
+
+                    <div>
+                        <p>MEDICO</p>
+                    </div>
+                    </div>
+
+            </header>
 
             <main className="afastar_list_medico ">
                 {/* Lista de tipos de consulta */}

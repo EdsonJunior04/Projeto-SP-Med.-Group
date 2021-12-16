@@ -90,6 +90,8 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// 
+        [Authorize(Roles = "3")]
         [HttpPatch("Cancelar/{id:int}")]
         public IActionResult Cancelar(int id)
         {
@@ -130,6 +132,8 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// [
+        [Authorize(Roles = "2")]
         [HttpPatch("Realizar/{id:int}")]
         public IActionResult Realizar(int id)
         {
@@ -177,7 +181,7 @@ namespace senai.sp_med_group.webApi.Controllers
             {
 
                 int id = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-                
+
                 int idTipoUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Role).Value);
 
                 List<Consulta> listaConsulta = _consultaRepository.ListarMinhasConsultas(id, idTipoUsuario);

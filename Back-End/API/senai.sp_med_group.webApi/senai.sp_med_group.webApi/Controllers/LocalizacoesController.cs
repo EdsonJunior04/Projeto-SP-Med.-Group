@@ -27,6 +27,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// Lista todas as localizações
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles = "3")]
         [HttpGet]
         public IActionResult ListarTodas()
         {
@@ -45,6 +46,7 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="novaLocalizacao"></param>
         /// <returns></returns>
+        [Authorize(Roles = "3")]
         [HttpPost]
         public IActionResult Cadastrar(Localizacao novaLocalizacao)
         {

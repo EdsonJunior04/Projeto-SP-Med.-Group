@@ -1,3 +1,8 @@
+
+header{
+    margin-bottom: 90px;
+}
+
 .icon{
     position: absolute;
     z-index: 4;
@@ -10,31 +15,34 @@
 .hamburguer{
     top: 50%;
     left: 10%;
-    width: 30px;
+    width: 40px;
     height: 6px;
-    background-color: #ff3300;
+    background-color: #fff;
     position: absolute;
     box-shadow: 0  2px 5px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
+    margin-top: 15px;
 }
 
 .hamburguer:before{
     top: -12px;
     content: '';
     position: absolute;
-    width: 37px;
+    width: 40px;
     height: 6px;
-    background-color: #ff3300;
+    background-color: #FFF;
     box-shadow: 0  2px 5px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
+    margin-top: 0px;
 }
+
 .hamburguer:after{
     top: 12px;
     content: '';
     position: absolute;
-    width: 37px;
+    width: 40px;
     height: 6px;
-    background-color: #ff3300;
+    background-color: #FFF;
     box-shadow: 0  2px 5px rgba(0, 0, 0, 0.2);
     transition: 0.5s;
 }
@@ -43,25 +51,32 @@
     display: flex;
     flex-direction: column;
     left: 1%;
-    padding: 45px 0 0;
     flex-wrap: nowrap;
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
+    background: radial-gradient(circle,#E1DCF5,#E1DCF5);
+    border-radius:0 0 50px  0;
+    padding: 60px 0 0 10px ;
 }
 
 .list.listItems{
     padding: 0;
     list-style: none;
+     
 }
 
-.list.listItems li{
-    margin: 2px 8px;
+.Link{
+    margin: 2px 8px; 
     cursor: pointer;
+    list-style-type: none; 
+    text-decoration: none;
+    color: #FFF;
 }
 
-.list.listItems li:hover{
+.list .listItems li:hover{
     font-weight: 800;
+    padding-left: 10px;
 }
 
 .icon.iconActive .hamburguer{
@@ -83,11 +98,16 @@
     box-shadow: 0 -2 5px rgba(0, 0, 0, 0.2);
 } 
 
+
 .menu.menuOpen{
+    position: absolute;
     width: 150px;
-    height: 100vh;
-    background: #000;
-    box-shadow: 10px 0px 69px 0px rgba(0, 0, 0, 0.59);
+    height: 250px;
+    top:0;
+	left: 0;
+    background: radial-gradient(circle,#E1DCF5,#E1DCF5);
+    border-radius: 100px 0;
+    z-index: 1;
 }
 
 .menu.menuClose{

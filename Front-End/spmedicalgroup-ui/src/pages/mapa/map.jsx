@@ -1,7 +1,7 @@
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 import { Component } from "react";
 import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import api from '../../services/api';
 
 class maps extends Component {
@@ -12,11 +12,12 @@ class maps extends Component {
             showingInfoWindow: false,
             marcadorAtivo: {},
             lugar: {},
+            active: false,
         }
     };
 
     BuscarLocalizacoes = () => {
-        api("/Localizacoes",{
+        api("/Localizacoes", {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -32,9 +33,13 @@ class maps extends Component {
         this.setState({
             lugar: props,
             marcadorAtivo: marker,
-            showingInfoWindow: true
+            showingInfoWindow: true,
+            
         });
 
+        toggleMode = () => {
+            this.setState({ active: !this.state.active })
+        }
 
     componentDidMount() {
         this.BuscarLocalizacoes()
@@ -49,23 +54,40 @@ class maps extends Component {
             <div>
                 <main>
 
-                <header className=" container header_Home" id="header">
-                <div className=" div_header container">
+                <header>
                     <div>
-                        <a href="#header">
-                            <img className="img_header" src={logo} alt="" />
-                        </a>
+                        <div className={this.state.active ? "icon iconActive" : "icon"} onClick={this.toggleMode}>
+                            <div className="hamburguer hamburguerIcon"></div>
+                        </div>
+                        <div className={this.state.active ? 'menu menuOpen ' : 'menu menuClose'}>
+                            <div className='list '>
+                                <ul className='listItems'>
+                                    <Link className='Link' to=""><li>PERFIL</li></Link>
+                                    <a className='Link' href="#cadastro"><li>CADASTRAR CONSULTA</li></a>
+                                    <a className='Link' href="#lista"><li>LISTAR CONSULTAS</li></a>
+                                    <Link className='Link' to="/mapa"><li>MAPAS</li></Link>
+                                    <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
+                                    <li><button className='btn_sair btn' onClick={this.logout} >Sair</button></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div className="org_heade_adm">
-                        <a href="/">Home</a>
-                        <a href="/admlistar">Consultas</a>
-                        <a href="/admusuario">Cadastrar Usuario</a>
-                        <a href="/adm">Adminitrador</a>
 
+                    <div className="container_header_paciente">
+                        <Link to="/">
+                            <img
+                                src={logo}
+                                className="icone_paciente"
+                                alt="logo da Sp Medical Group"
+                            />{' '}
+                        </Link>
 
+                        <div>
+                            <p>ADIMINISRADOR</p>
+                        </div>
                     </div>
-                </div>
-            </header>
+
+                </header>
 
                     <Map google={this.props.google} zoom={12}
                         initialCenter={{
@@ -104,5 +126,5 @@ class maps extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: ("AIzaSyBMkmry7eDc01lkICfWmMrdv18FsX_oDOQ")
+    apiKey: ("AIzaSyBBZYzs6HaSyjeVDFe-6UuasHX7XSB3Z5E")
 })(maps)
