@@ -31,7 +31,7 @@ export default function HeaderAdm() {
                         <div className={active ? 'menu menuOpen ' : 'menu menuClose'}>
                             <div className='list '>
                                 <ul className='listItems'>
-                                    <a className='Link' href="/perfil"><li>Perfíl</li></a>
+                                    <a className='Link' href="/perfil"><li>Perfil</li></a>
                                     <a className='Link' href="/consultas#lista"><li>Consultas</li></a>
                                     <a className='Link' href="/consultasAdm#cadastro"><li>Cadastrar Consultas</li></a>
                                     <a className='Link' href="/mapa"><li>Mapas</li></a>

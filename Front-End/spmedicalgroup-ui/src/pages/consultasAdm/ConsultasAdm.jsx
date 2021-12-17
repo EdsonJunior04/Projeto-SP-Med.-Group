@@ -124,20 +124,20 @@ class consultasAdm extends React.Component {
 
     };
     cancelarConsulta = (consulta) => {
-        api.put('/Consultas/Cancelar/' + consulta.idConsulta, {
+        console.log(consulta.idConsulta)
+        api.patch('/Consultas/Cancelar/' + consulta.idConsulta, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
-            },
+            }
         })
             .then((resposta) => {
                 if (resposta.status === 200) {
                     console.log(
-                        'Essa Consulta ' + consulta.idConsulta + ' foi cancelada!',
+                        'Essa Consulta ' + consulta.idConsulta + ' foi cancelada!'
                     );
                 }
             })
             .catch((erro) => console.log(erro))
-
             .then(this.buscarConsulta);
 
     };

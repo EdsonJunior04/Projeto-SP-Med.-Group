@@ -36,8 +36,10 @@ export default class Perfil extends Component {
     };
 
     atualizaState = (event) => {
-        console.log(event);
-        this.setState({ arquivo: event.target.files[0] });
+        console.log('foto');
+        this.setState({ arquivo: event.target.files[0] }, () => {
+            console.log(this.state.arquivo)
+        });
     };
 
     toggleMode = () => {
@@ -54,7 +56,7 @@ export default class Perfil extends Component {
         )
             .catch((erro) => console.log(erro))
             .then((resposta) => {
-                if (resposta.status === 415) {
+                if (resposta.status === 200) {
                     console.log(resposta);
                     this.setState({ imagem64: resposta.data });
                 }
