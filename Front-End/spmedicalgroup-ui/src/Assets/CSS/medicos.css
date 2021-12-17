@@ -6,9 +6,7 @@
 
 
 p{
-    margin-right: 90px;
-    color: white;
-    width: 90px;
+    color: white;    
     text-transform: uppercase;
     font-size: 30px;
 }
@@ -20,6 +18,13 @@ p{
     flex-direction: column;
     align-items: center;
     padding: 25px;
+}
+
+.end{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E1DCF5;
 }
 
 table{

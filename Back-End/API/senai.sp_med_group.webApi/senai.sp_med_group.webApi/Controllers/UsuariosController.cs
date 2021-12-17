@@ -24,7 +24,7 @@ namespace senai.sp_med_group.webApi.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
-        [Authorize(Roles = "3")]
+        //[Authorize(Roles = "3")]
         [HttpGet("imagem/bd/{idUsuario}")]
         public IActionResult ConsultarBD(short idUsuario)
         {
@@ -40,14 +40,14 @@ namespace senai.sp_med_group.webApi.Controllers
             }
         }
 
-        [Authorize(Roles = "3")]
+       // [Authorize(Roles = "3")]
         [HttpPost("imagem/bd")]
         public IActionResult PostBD(IFormFile arquivo)
 
         {
             try
             {
-                if (arquivo.Length > 200000)
+                if (arquivo.Length > 5000000)
                 {
                     return BadRequest(new
                     {
@@ -56,13 +56,13 @@ namespace senai.sp_med_group.webApi.Controllers
                 }
                 string extensao = arquivo.FileName.Split('.').Last();
 
-                if (extensao != "png")
-                {
-                    return BadRequest(new
-                    {
-                        mensagem = "Apenas arquivos .png são permitidos"
-                    });
-                }
+                //if (extensao != "png")
+                //{
+                  //  return BadRequest(new
+                    //{
+                      //  mensagem = "Apenas arquivos .png são permitidos"
+                    //});
+                //}
 
                 int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
 

@@ -35,8 +35,8 @@ class consultasAdm extends React.Component {
 
             const resposta = await api.get('/Medicos', {
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+                },
             })
             if (resposta.status === 200) {
                 this.setState({ listaMedicos: resposta.data });
@@ -106,9 +106,9 @@ class consultasAdm extends React.Component {
     };
 
     deletarConsulta = (consulta) => {
-        api.delete('/Consultas/Remover/' + consulta.idConsulta,{
+        api.delete('/Consultas/Remover/' + consulta.idConsulta, {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
         })
             .then((resposta) => {
@@ -124,15 +124,13 @@ class consultasAdm extends React.Component {
 
     };
     cancelarConsulta = (consulta) => {
-        api.patch('/Consultas/Cancelar/' + consulta.idConsulta,
-        {
+        api.put('/Consultas/Cancelar/' + consulta.idConsulta, {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        }
-        )
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        })
             .then((resposta) => {
-                if (resposta.status === 204) {
+                if (resposta.status === 200) {
                     console.log(
                         'Essa Consulta ' + consulta.idConsulta + ' foi cancelada!',
                     );
@@ -157,7 +155,11 @@ class consultasAdm extends React.Component {
                 idSituacao: this.state.idSituacao,
                 descricao: this.state.descricao,
                 dataConsulta: new Date(this.state.dataConsulta)
-            },
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+                },
+            }
 
             );
             if (resposta.status === 201) {
@@ -179,36 +181,35 @@ class consultasAdm extends React.Component {
             <div>
 
                 <header>
-                    <div>
-                        <div className={this.state.active ? "icon iconActive" : "icon"} onClick={this.toggleMode}>
-                            <div className="hamburguer hamburguerIcon"></div>
-                        </div>
-                        <div className={this.state.active ? 'menu menuOpen ' : 'menu menuClose'}>
-                            <div className='list '>
-                                <ul className='listItems'>
-                                    <Link className='Link' to=""><li>PERFIL</li></Link>
-                                    <a className='Link' href="#cadastro"><li>CADASTRAR CONSULTA</li></a>
-                                    <a className='Link' href="#lista"><li>LISTAR CONSULTAS</li></a>
-                                    <Link className='Link' to="/mapa"><li>MAPAS</li></Link>
-                                    <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
-                                    <li><button className='btn_sair btn' onClick={this.logout} >Sair</button></li>
-                                </ul>
+                    <div className='end'>
+                        <div className="container_header_paciente">
+                            <div>
+                                <div className={this.state.active ? "icon iconActive" : "icon"} onClick={this.toggleMode}>
+                                    <div className="hamburguer hamburguerIcon"></div>
+                                </div>
+                                <div className={this.state.active ? 'menu menuOpen ' : 'menu menuClose'}>
+                                    <div className='list '>
+                                        <ul className='listItems'>
+                                            <Link className='Link' to=""><li>PERFIL</li></Link>
+                                            <a className='Link' href="#cadastro"><li>CADASTRAR CONSULTA</li></a>
+                                            <a className='Link' href="#lista"><li>LISTAR CONSULTAS</li></a>
+                                            <Link className='Link' to="/mapa"><li>MAPAS</li></Link>
+                                            <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
+                                            <li><button className='btn_sair btn' onClick={this.logout} >Sair</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div className="container_header_paciente">
-                        <Link to="/">
+
                             <img
                                 src={logo}
                                 className="icone_paciente"
                                 alt="logo da Sp Medical Group"
                             />{' '}
-                        </Link>
-
-                        <div>
-                            <p>ADIMINISRADOR</p>
                         </div>
+
+                        <p>ADIMINISTRADOR</p>
                     </div>
 
                 </header>

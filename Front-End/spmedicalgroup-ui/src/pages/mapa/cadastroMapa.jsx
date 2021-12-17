@@ -16,9 +16,14 @@ class cadastrarMapa extends React.Component {
             nomePaciente: '',
             longitude: '',
             latitude: '',
+            active: false,
             isLoading: false
         };
     };
+
+    toggleMode = () => {
+        this.setState({ active: !this.state.active })
+    }
 
     buscarPacientes = async () => {
         try {
@@ -95,29 +100,38 @@ class cadastrarMapa extends React.Component {
             //JSX
             <div>
 
-                <header>
-                    <div className="container_header_consulta">
-                        <Link to="/">
+<header>
+                    <div className='end'>
+                        <div className="container_header_paciente">
+                            <div>
+                                <div className={this.state.active ? "icon iconActive" : "icon"} onClick={this.toggleMode}>
+                                    <div className="hamburguer hamburguerIcon"></div>
+                                </div>
+                                <div className={this.state.active ? 'menu menuOpen ' : 'menu menuClose'}>
+                                    <div className='list '>
+                                        <ul className='listItems'>
+                                            <Link className='Link' to=""><li>PERFIL</li></Link>
+                                            <a className='Link' href="#cadastro"><li>CADASTRAR CONSULTA</li></a>
+                                            <a className='Link' href="#lista"><li>LISTAR CONSULTAS</li></a>
+                                            <Link className='Link' to="/mapa"><li>MAPAS</li></Link>
+                                            <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
+                                            <li><button className='btn_sair btn' onClick={this.logout} >Sair</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <img
                                 src={logo}
-                                className="icone_consulta"
+                                className="icone_paciente"
                                 alt="logo da Sp Medical Group"
                             />{' '}
-                        </Link>
+                        </div>
 
-
-                        <div>
-                            CADASTRAR LOCALIZAÇÃO
-                        </div>
-                        <Link to="/mapa">
-                        <div>
-                            MAPA
-                        </div>
-                        </Link>
-                        <div>
-                            <button className='btn_sair btn' onClick={this.logout} >Sair</button>
-                        </div>
+                        <p>ADIMINISTRADOR</p>
                     </div>
+
                 </header>
 
                 <main className="afastar_list_consulta ">

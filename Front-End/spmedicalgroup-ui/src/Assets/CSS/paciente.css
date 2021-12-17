@@ -43,18 +43,21 @@ td{
     text-align: center;
 }
 
+
+
 .icone_paciente{
-    margin-left: 100px;
-    width: 330px;
+    margin-left: 650px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container_header_paciente{
+/* .container_header_paciente{
     height: 80px;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
     background-color: #E1DCF5;
-}
+} */
 
 .afastar_list_paciente{
     margin-top: 150px;

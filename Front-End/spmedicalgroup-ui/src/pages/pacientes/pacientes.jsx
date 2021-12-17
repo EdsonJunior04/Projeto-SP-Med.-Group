@@ -31,7 +31,7 @@ export default function Pacientes() {
     }
     useEffect(buscarMinhasConsultas, [])
 
-    const logout =  () => {
+    const logout = () => {
         localStorage.removeItem('usuario-login');
         navigation.push('/')
     }
@@ -39,36 +39,37 @@ export default function Pacientes() {
     return (
         <div>
 
-<header>
-                <div>
-                    <div className={active ? "icon iconActive" : "icon"} onClick={ToggleMode}>
-                        <div className="hamburguer hamburguerIcon"></div>
-                    </div>
-                    <div className={active ? 'menu menuOpen ' : 'menu menuClose'}>
-                        <div className='list '>
-                            <ul className='listItems'>
-                                <li>PERFIL</li>
-                                <li>ALTERAR DESCRIÇÃO</li>
-                                <li>LISTAR CONSULTAS</li>
-                                <li><button className='btn_sair btn' onClick={logout} >Sair</button></li>
-                            </ul>
+            <header>
+                <div className='end'>
+                    <div className="container_header_paciente">
+                        <div>
+                            <div className={active ? "icon iconActive" : "icon"} onClick={ToggleMode}>
+                                <div className="hamburguer hamburguerIcon"></div>
+                            </div>
+                            <div className={active ? 'menu menuOpen ' : 'menu menuClose'}>
+                                <div className='list '>
+                                    <ul className='listItems'>
+                                        <Link className='Link' to=""><li>PERFIL</li></Link>
+                                        <a className='Link' href="#cadastro"><li>CADASTRAR CONSULTA</li></a>
+                                        <a className='Link' href="#lista"><li>LISTAR CONSULTAS</li></a>
+                                        <Link className='Link' to="/mapa"><li>MAPAS</li></Link>
+                                        <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
+                                        <li><button className='btn_sair btn' onClick={logout} >Sair</button></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div className="container_header_paciente">
-                    <Link to="/">
+
                         <img
                             src={logo}
                             className="icone_paciente"
                             alt="logo da Sp Medical Group"
                         />{' '}
-                    </Link>
+                    </div>
 
-                    <div>
-                        <p>Paciente</p>
-                    </div>
-                    </div>
+                    <p>PACIENTE</p>
+                </div>
 
             </header>
 

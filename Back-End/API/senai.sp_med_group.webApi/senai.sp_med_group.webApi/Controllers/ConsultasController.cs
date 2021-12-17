@@ -90,9 +90,8 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// 
         [Authorize(Roles = "3")]
-        [HttpPatch("Cancelar/{id:int}")]
+        [HttpPut("Cancelar/{id:int}")]
         public IActionResult Cancelar(int id)
         {
             try
@@ -132,9 +131,8 @@ namespace senai.sp_med_group.webApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// [
-        [Authorize(Roles = "2")]
-        [HttpPatch("Realizar/{id:int}")]
+        [Authorize(Roles = "1")]
+        [HttpPut("Realizar/{id:int}")]
         public IActionResult Realizar(int id)
         {
             try

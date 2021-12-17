@@ -22,7 +22,6 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
-            
         </member>
         <member name="M:senai.sp_med_group.webApi.Controllers.ConsultasController.Realizar(System.Int32)">
             <summary>
@@ -30,7 +29,6 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
-            [
         </member>
         <member name="M:senai.sp_med_group.webApi.Controllers.ConsultasController.ListarMinhas">
             <summary>
