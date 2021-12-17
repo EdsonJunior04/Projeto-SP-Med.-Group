@@ -147,5 +147,11 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:senai.sp_med_group.webApi.Repositories.UsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário existente
+            </summary>
+            <param name="id">ID do usuário que será deletado</param>
+        </member>
     </members>
 </doc>

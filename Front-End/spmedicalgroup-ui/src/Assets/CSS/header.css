@@ -56,14 +56,13 @@ header{
     font-size: 1.2rem;
     font-weight: 600;
     background: radial-gradient(circle,#E1DCF5,#E1DCF5);
-    border-radius:0 0 50px  0;
-    padding: 60px 0 0 10px ;
+    border-radius:0 0 100px  0;
+    padding: 120px 60px 60px 35px ;
 }
 
-.list.listItems{
+.list .listItems{
     padding: 0;
     list-style: none;
-     
 }
 
 .Link{
@@ -72,11 +71,15 @@ header{
     list-style-type: none; 
     text-decoration: none;
     color: #FFF;
+    text-transform: uppercase;
 }
 
 .list .listItems li:hover{
     font-weight: 800;
-    padding-left: 10px;
+    padding-left: 12px;
+}
+.list .listItems li{
+    margin-top: 50px;
 }
 
 .icon.iconActive .hamburguer{
@@ -101,16 +104,17 @@ header{
 
 .menu.menuOpen{
     position: absolute;
-    width: 150px;
+    width: 300px;
     height: 250px;
     top:0;
 	left: 0;
     background: radial-gradient(circle,#E1DCF5,#E1DCF5);
-    border-radius: 100px 0;
+    border-radius: 200px 0;
     z-index: 1;
+    /* box-shadow: 90px -880px 900px rgba(0, 0, 0, 0.9), 30px 40px 135px 40px rgba(0, 0, 0, 0.9); */
 }
 
 .menu.menuClose{
     display: none;
-    width: 0px;
+    width: 80px;
 }

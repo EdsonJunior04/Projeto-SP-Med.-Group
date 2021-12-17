@@ -17,5 +17,7 @@ namespace senai.sp_med_group.webApi.Interfaces
         void Atualizar(int id, Usuario userAtt);
         void SalvarPerfilBD(IFormFile foto, int id_usuario);
         string ConsultarPerfilBD(int id_usuario);
+        void SalvarPerfilDir(IFormFile foto, int id_usuario);
+        string ConsultarPerfilDir(int id_usuario);
     }
 }

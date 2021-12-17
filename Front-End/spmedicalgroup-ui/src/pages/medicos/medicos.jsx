@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 import '../../Assets/CSS/header.css'
+import HeaderMedico from "../../components/header/headerMedico";
 
 
 
@@ -13,13 +14,10 @@ export default function Medicos() {
     const [idConsulta, setIdConsultas] = useState(0)
     const [idMedico] = useState(0)
     const [descricao, setDescricao] = useState('')
-    const [isLoading, setisLoading] = useState(false)
-    const navigation = useHistory();
-    const [active, setMode] = useState(false);
+    const [isLoading, setisLoading] = useState(false)  
+    
 
-    const ToggleMode = () => {
-        setMode(!active)
-    }
+   
 
     function realizarConsulta(id) {
         console.log(id)
@@ -39,10 +37,7 @@ export default function Medicos() {
             .catch((erro) => console.log(erro))
     };
 
-    const logout = () => {
-        localStorage.removeItem('usuario-login');
-        navigation.push('/')
-    }
+    
 
 
     function buscarMinhasConsultas() {
@@ -91,36 +86,7 @@ export default function Medicos() {
         <div>
 
             <header>
-                <div className='end'>
-                    <div className="container_header_paciente">
-                        <div>
-                            <div className={active ? "icon iconActive" : "icon"} onClick={ToggleMode}>
-                                <div className="hamburguer hamburguerIcon"></div>
-                            </div>
-                            <div className={active ? 'menu menuOpen ' : 'menu menuClose'}>
-                                <div className='list '>
-                                    <ul className='listItems'>
-                                        <Link className='Link' to=""><li>PERFIL</li></Link>
-                                        <a className='Link' href="#cadastro"><li>CADASTRAR CONSULTA</li></a>
-                                        <a className='Link' href="#lista"><li>LISTAR CONSULTAS</li></a>
-                                        <Link className='Link' to="/mapa"><li>MAPAS</li></Link>
-                                        <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
-                                        <li><button className='btn_sair btn' onClick={logout} >Sair</button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <img
-                            src={logo}
-                            className="icone_paciente"
-                            alt="logo da Sp Medical Group"
-                        />{' '}
-                    </div>
-
-                    <p>MEDICO</p>
-                </div>
+                <HeaderMedico />
 
             </header>
 

@@ -1,8 +1,7 @@
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 import { Component } from "react";
-import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
-import { Link } from "react-router-dom";
 import api from '../../services/api';
+import HeaderAdm from '../../components/header/headerAdm';
 
 class maps extends Component {
     constructor(props) {
@@ -52,40 +51,10 @@ class maps extends Component {
     render() {
         return (
             <div>
-                <main>
-
-                    <header>
-                        <div className='end'>
-                            <div className="container_header_paciente">
-                                <div>
-                                    <div className={this.state.active ? "icon iconActive" : "icon"} onClick={this.toggleMode}>
-                                        <div className="hamburguer hamburguerIcon"></div>
-                                    </div>
-                                    <div className={this.state.active ? 'menu menuOpen ' : 'menu menuClose'}>
-                                        <div className='list '>
-                                            <ul className='listItems'>
-                                                <Link className='Link' to=""><li>PERFIL</li></Link>
-                                                <a className='Link' href="/consultasAdm#cadastro"><li>CADASTRAR CONSULTA</li></a>
-                                                <a className='Link' href="/consultasAdm#lista"><li>LISTAR CONSULTAS</li></a>
-                                                <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
-                                                <li><button className='btn_sair btn' onClick={this.logout} >Sair</button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <img
-                                    src={logo}
-                                    className="icone_paciente"
-                                    alt="logo da Sp Medical Group"
-                                />{' '}
-                            </div>
-
-                            <p>ADIMINISTRADOR</p>
-                        </div>
-
-                    </header>
+                <header>
+                    <HeaderAdm />
+                </header>
+                <main>           
 
                     <Map google={this.props.google} zoom={12}
                         initialCenter={{

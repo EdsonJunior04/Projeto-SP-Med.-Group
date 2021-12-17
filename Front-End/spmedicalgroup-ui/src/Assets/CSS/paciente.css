@@ -17,7 +17,7 @@
 
 
 p{
-    margin-right: 30px;
+    margin-right: -90px;
     color: white;
 }
 
@@ -46,7 +46,7 @@ td{
 
 
 .icone_paciente{
-    margin-left: 650px;
+    margin-left: 600px;
     width: 300px;
     display: flex;
     justify-content: center;

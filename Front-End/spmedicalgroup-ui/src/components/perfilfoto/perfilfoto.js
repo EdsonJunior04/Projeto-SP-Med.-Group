@@ -1,5 +1,6 @@
 import { React, Component } from 'react';
 import api from '../../services/api';
+import '../../Assets/CSS/perfil.css'
 
 export default class PerfilFoto extends Component {
   constructor(props) {
@@ -7,12 +8,12 @@ export default class PerfilFoto extends Component {
     this.state = { imagem64: '' };
   }
 
-//   componentDidMount() {
-//     this.buscarImagem();
-//   }
+  componentDidMount() {
+    this.buscarImagem();
+  }
 
   buscarImagem = () => {
-    api('/Usuarios/imagem/bd', {
+    api('/Perfils/imagem/bd', {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
       },
@@ -29,7 +30,7 @@ export default class PerfilFoto extends Component {
   render() {
     return (
       <img
-        className="imagem-header"
+        className="imagem_header"
         src={`data:image;base64,${this.state.imagem64}`}
         alt="Imagem de Perfil"
       />

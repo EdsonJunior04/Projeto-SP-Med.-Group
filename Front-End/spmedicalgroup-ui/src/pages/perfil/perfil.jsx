@@ -1,26 +1,27 @@
 import { React, Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../../Assets/img/Sp Medical Grouplogo.svg';
 import api from '../../services/api';
 import Titulo from '../../components/titulo/titulo';
 import PerfilFoto from '../../components/perfilfoto/perfilfoto';
+import '../../Assets/CSS/perfil.css'
 export default class Perfil extends Component {
     constructor(props) {
         super(props);
         this.state = {
             imagem64: '',
+            active: false,
             arquivo: null,
         };
     }
     upload = () => {
         const formData = new FormData();
         formData.append(
-            'arquivo', //chave, nome do arquivo que será enviado.
-            this.state.arquivo, // valor, arquivo físico
+            'arquivo',
+            this.state.arquivo,
         );
 
-        api.post('/Usuarios/imagem/bd', formData, {
+        api.post('/Perfils/imagem/bd', formData, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
@@ -29,31 +30,40 @@ export default class Perfil extends Component {
             .then(this.buscarImagem);
     };
 
+    logout = async () => {
+        localStorage.removeItem('usuario-login');
+        this.props.history.push('/');
+    };
+
     atualizaState = (event) => {
         console.log(event);
         this.setState({ arquivo: event.target.files[0] });
     };
 
+    toggleMode = () => {
+        this.setState({ active: !this.state.active })
+    }
+
     buscarImagem = () => {
-        axios('/Usuarios/imagem/bd/',
-        //  {
-        //     headers: {
-        //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
-        //     },
-        // }
+        api('/Perfils/imagem/bd',
+         {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }
         )
             .catch((erro) => console.log(erro))
             .then((resposta) => {
-                if (resposta.status === 200) {
+                if (resposta.status === 415) {
                     console.log(resposta);
                     this.setState({ imagem64: resposta.data });
                 }
             });
     };
 
-    // componentDidMount() {
-    //     this.buscarImagem();
-    // }
+    componentDidMount() {
+        this.buscarImagem();
+    }
 
     render() {
         return (
@@ -69,7 +79,7 @@ export default class Perfil extends Component {
                                 <div className={this.state.active ? 'menu menuOpen ' : 'menu menuClose'}>
                                     <div className='list '>
                                         <ul className='listItems'>
-                                            <Link className='Link' to=""><li>PERFIL</li></Link>
+                                            <Link className='Link' to="/perfil"><li>PERFIL</li></Link>
                                             <a className='Link' href="/consultasAdm#cadastro"><li>CADASTRAR CONSULTA</li></a>
                                             <a className='Link' href="/consultasAdm#lista"><li>LISTAR CONSULTAS</li></a>
                                             <Link className='Link' to="/cadastrarMapa"><li>CADASTRAR LOCALIZAÇÃO</li></Link>
@@ -86,8 +96,8 @@ export default class Perfil extends Component {
                                 alt="logo da Sp Medical Group"
                             />{' '}
                         </div>
-                        <PerfilFoto />
                         <p>ADIMINISTRADOR</p>
+                        <PerfilFoto />
                     </div>
 
                 </header>
@@ -95,21 +105,21 @@ export default class Perfil extends Component {
                 <main className="afastar_list_paciente">
                     <section className="lista_paciente grid">
                         <Titulo titulosecao="Imagem do Perfil" />
-                        <div className="container" id="conteudoPrincipal-lista">
+                        <div className="container_perfil" id="conteudoPrincipal-lista">
                             <h2>Upload de Imagem</h2>
-                            <input type="file" onChange={this.atualizaState} />
+                            <input  type="file" onChange={this.atualizaState} />
 
                             {
                                 this.state.arquivo === null ?
-                                    <button disabled className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro" onClick={this.upload} >Enviar! </button>
+                                    <button disabled className="acoes_btn btn" onClick={this.upload} >Enviar! </button>
                                     :
-                                    <button className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro" onClick={this.upload} >Enviar! </button>
+                                    <button className="acoes_btn btn" onClick={this.upload} >Enviar! </button>
                             }
 
 
                         </div>
-                        <div className="container" id="conteudoPrincipal-lista">
-                            <img className="imagem-header"
+                        <div className="container_perfil" id="conteudoPrincipal-lista">
+                            <img className="imagem_header"
                                 src={`data:image;base64,${this.state.imagem64}`}
                                 alt="Imagem de Perfil"
                             />
