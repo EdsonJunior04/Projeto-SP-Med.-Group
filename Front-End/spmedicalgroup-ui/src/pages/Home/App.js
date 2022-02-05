@@ -1,6 +1,8 @@
 import { Component } from "react";
 import api from "../../services/api";
 import { parseJwt } from "../../services/auth";
+import { Link } from "react-router-dom";
+
 
 import '../../Assets/CSS/login.css';
 
@@ -115,6 +117,9 @@ export default class Login extends Component {
                                         </button>
                                     )
                                 }
+                                <div className="cadastre">Não tem conta?    <Link to="/cadastrar" className="cadastrar">Cadastre-se</Link></div>
+                                
+
                             </div>
                         </form>
                     </div>

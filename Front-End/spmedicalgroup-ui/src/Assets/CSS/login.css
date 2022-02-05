@@ -54,3 +54,16 @@
     color: white;
     text-align: left;
   }
+  .cadastrar{
+      text-decoration: none;
+      color: #3D8DF2;
+      font-size: 2vh;
+  }
+  .cadastrar:hover{
+      color: white;
+  }
+  .cadastre{
+      padding-top: 10vh;
+      color: white;
+      font-size: 2vh;
+  }

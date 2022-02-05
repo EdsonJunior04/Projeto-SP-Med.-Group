@@ -14,6 +14,7 @@ import mapa from './pages/mapa/map';
 import cadastrarMapa from './pages/mapa/cadastroMapa';
 import Header from './pages/Header/header';
 import Perfil from './pages/perfil/perfil';
+import Cadastro from './pages/cadastro/cadastro';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -32,6 +33,7 @@ const routing=(
       <Route  path="/perfil" component={ Perfil } />      
       <Route  path="/mapa" component={ mapa } />      
       <Route  path="/header" component={ Header } />      
+      <Route  path="/cadastrar" component={ Cadastro } />      
       <Redirect to="/notfound" />
       </Switch>
      

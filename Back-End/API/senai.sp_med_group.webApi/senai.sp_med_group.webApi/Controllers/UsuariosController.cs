@@ -39,7 +39,7 @@ namespace senai.sp_med_group.webApi.Controllers
             return Ok(_usuarioRepository.ListarUsuarios());
         }
 
-        [Authorize(Roles = "3")]
+        //[Authorize(Roles = "3")]
         [HttpPost]
         public IActionResult Cadastrar(Usuario novoUsuario)
         {
@@ -67,7 +67,7 @@ namespace senai.sp_med_group.webApi.Controllers
 
         }
 
-        [Authorize(Roles = "3")]
+        //[Authorize(Roles = "3")]
         [HttpPut("att/{id}")]
         public IActionResult Atualizar(int id, Usuario usuarioAtualizado)
         {
