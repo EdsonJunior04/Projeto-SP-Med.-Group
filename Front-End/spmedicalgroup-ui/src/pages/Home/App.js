@@ -22,7 +22,7 @@ export default class Login extends Component {
     efetuarLogin = (evento) => {
         evento.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true })
-         api.post('/Login', {
+        api.post('/Login', {
             emailUsuario: this.state.email,
             senhaUsuario: this.state.senha,
         })
@@ -41,7 +41,7 @@ export default class Login extends Component {
             })
             .catch(() => {
                 this.setState({
-                    erroMensagem: 'E-mail e/ou senha estão inválidos',
+                    erroMensagem: 'E-mail e/ou senha estão inválidos!',
                     isLoading: false,
                 })
             })
@@ -87,6 +87,11 @@ export default class Login extends Component {
                                     placeholder=" senha"
                                     onChange={this.atualizaStateCampo}
                                 />
+                                <div className="erroMensagem">
+
+                                    <text style={{ color: 'red' }} >{this.state.erroMensagem}</text>
+                                </div>
+
                                 {
                                     this.state.isLoading === true && (
                                         <button
@@ -118,7 +123,7 @@ export default class Login extends Component {
                                     )
                                 }
                                 <div className="cadastre">Não tem conta?    <Link to="/cadastrar" className="cadastrar">Cadastre-se</Link></div>
-                                
+
 
                             </div>
                         </form>

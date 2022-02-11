@@ -15,30 +15,30 @@
 }
 
 .btn_login{
-    height: 50px;
-    margin-top: 50px;
-    width: 350px;
-    border-radius: 20px;
-    font-size: 20px;
+    height: 6vh;
+    margin-top: 4vw;
+    width: 20vw;
+    border-radius: 20vw;
+    font-size: 1vw;
     color: white;
     background-color: #3D8DF2;
     border: none;
 }
 
 .icone__login{
-    margin-top: 90px;
+    margin-top: 9vw;
 }
 
 .input_login {
     border: 0;
-    width: 350px;
+    width: 23vw;
     border-bottom: 1px solid #e6e6e6;
     text-align: center;
     padding: 10px;
     background: transparent;
     color: white;
     text-align: left;
-    margin-top: 50px;
+    margin-top: 3vw;
   }
   
   .input_login::placeholder{
@@ -66,4 +66,9 @@
       padding-top: 10vh;
       color: white;
       font-size: 2vh;
+  }
+
+  .erroMensagem{
+      font-size: 1vw;
+      margin-top: 2vw;
   }

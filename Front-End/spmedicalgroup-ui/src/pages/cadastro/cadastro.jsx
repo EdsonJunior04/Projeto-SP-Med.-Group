@@ -27,7 +27,7 @@ export default function Cadastro() {
                 }
             })
             .catch(() => {
-                setErrorMsg('E-mail e/ou senha inválidos!')
+                setErrorMsg('Cadastro não realizado!')
 
                 setisLoading(false)
 
@@ -93,6 +93,12 @@ export default function Cadastro() {
                                 placeholder=" senha"
                                 onChange={(campo) => setSenha(campo.target.value)}
                             />
+
+                            <div className="erroMensagem">
+
+                                <text style={{ color: 'red' }} >{setErrorMsg}</text>
+                            </div>
+
                             {isLoading && (
                                 <button disabled className='btn_medico' type='submit'>
                                     Carregando...
